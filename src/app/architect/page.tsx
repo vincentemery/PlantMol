@@ -17,6 +17,20 @@ import type {
   RiskLevel,
 } from "@/data/environments";
 import GenomeEditViewerWrapper from "@/components/GenomeEditViewerWrapper";
+import { generateFullAnalysis } from "@/data/analysis";
+import type { FullAnalysis } from "@/data/analysis";
+import {
+  InteractionMatrix,
+  ExpressionProfilePanel,
+  DeliveryPanel,
+  RegulatoryPanel,
+  StackingPanel,
+  WildRelativesPanel,
+  PhenotypePanel,
+  PathwayImpactPanel,
+  LiteraturePanel,
+  BiosafetySummary,
+} from "@/components/architect/AnalysisPanels";
 
 // ── Helpers ────────────────────────────────────────────────
 
@@ -95,6 +109,27 @@ function complexityBg(score: number): string {
   return "bg-red-500/10 border-red-500/20";
 }
 
+function riskScoreColor(score: number): string {
+  if (score <= 3) return "text-green-400";
+  if (score <= 6) return "text-yellow-400";
+  return "text-red-400";
+}
+
+function riskScoreBg(score: number): string {
+  if (score <= 3) return "bg-green-500/10 border-green-500/20";
+  if (score <= 6) return "bg-yellow-500/10 border-yellow-500/20";
+  return "bg-red-500/10 border-red-500/20";
+}
+
+// ── Tab definitions ────────────────────────────────────────
+
+interface TabDef {
+  id: string;
+  label: string;
+  icon: string; // SVG path
+  badge?: number;
+}
+
 // ── Step Indicator ─────────────────────────────────────────
 
 function StepIndicator({ current }: { current: number }) {
@@ -170,6 +205,7 @@ export default function GenomeArchitectPage() {
   const [expandedMechanisms, setExpandedMechanisms] = useState<Set<string>>(
     new Set()
   );
+  const [activeTab, setActiveTab] = useState("plan");
 
   useEffect(() => {
     document.title = "Genome Architect | PlantMol";
@@ -186,10 +222,84 @@ export default function GenomeArchitectPage() {
     return getEditPlan(selectedPlant.id, selectedEnv.id);
   }, [selectedPlant, selectedEnv]);
 
+  const analysis = useMemo<FullAnalysis | null>(() => {
+    if (!editPlan) return null;
+    return generateFullAnalysis(editPlan);
+  }, [editPlan]);
+
+  const geneNameMap = useMemo(() => {
+    const map = new Map<string, string>();
+    if (editPlan) {
+      editPlan.edits.forEach((e) => map.set(e.gene.geneId, e.gene.geneName));
+    }
+    return map;
+  }, [editPlan]);
+
+  const traitNameMap = useMemo(() => {
+    const map = new Map<string, string>();
+    if (editPlan) {
+      editPlan.edits.forEach((e) => map.set(e.trait.id, e.trait.name));
+    }
+    return map;
+  }, [editPlan]);
+
+  const tabs = useMemo<TabDef[]>(() => {
+    if (!analysis) return [];
+    const synCount = analysis.interactions.filter(
+      (i) => i.type === "synergistic"
+    ).length;
+    const antCount = analysis.interactions.filter(
+      (i) => i.type === "antagonistic"
+    ).length;
+    return [
+      {
+        id: "plan",
+        label: "Edit Plan",
+        icon: "M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z",
+      },
+      {
+        id: "interactions",
+        label: "Interactions",
+        icon: "M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4",
+        badge: analysis.interactions.length,
+      },
+      {
+        id: "implementation",
+        label: "Implementation",
+        icon: "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z",
+      },
+      {
+        id: "phenotype",
+        label: "Phenotype",
+        icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+        badge: analysis.wildRelatives.length > 0
+          ? analysis.wildRelatives.length
+          : undefined,
+      },
+      {
+        id: "pathways",
+        label: "Pathways",
+        icon: "M13 10V3L4 14h7v7l9-11h-7z",
+        badge: analysis.pathwayImpacts.length > 0
+          ? analysis.pathwayImpacts.length
+          : undefined,
+      },
+      {
+        id: "risk",
+        label: "Risk & Safety",
+        icon: "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z",
+        badge: analysis.biosafetyConcerns.length > 0
+          ? analysis.biosafetyConcerns.length
+          : undefined,
+      },
+    ];
+  }, [analysis]);
+
   function handleSelectPlant(plant: PlantGenome) {
     setSelectedPlant(plant);
     setSelectedEnv(null);
     setExpandedMechanisms(new Set());
+    setActiveTab("plan");
     setStep(2);
   }
 
@@ -197,6 +307,7 @@ export default function GenomeArchitectPage() {
     if (!availableEnvIds.has(env.id)) return;
     setSelectedEnv(env);
     setExpandedMechanisms(new Set());
+    setActiveTab("plan");
     setStep(3);
   }
 
@@ -223,6 +334,7 @@ export default function GenomeArchitectPage() {
     setSelectedPlant(null);
     setSelectedEnv(null);
     setExpandedMechanisms(new Set());
+    setActiveTab("plan");
     setStep(1);
   }
 
@@ -442,7 +554,7 @@ export default function GenomeArchitectPage() {
         )}
 
         {/* ── Step 3: Edit Plan Results ───────────────────── */}
-        {step === 3 && selectedPlant && selectedEnv && editPlan && (
+        {step === 3 && selectedPlant && selectedEnv && editPlan && analysis && (
           <div className="animate-fade-in-up">
             {/* Context banner */}
             <div className="flex flex-wrap items-center gap-3 bg-[#111827]/60 border border-[#1E293B] rounded-xl px-5 py-3 mb-8">
@@ -478,8 +590,8 @@ export default function GenomeArchitectPage() {
               </span>
             </div>
 
-            {/* ── Summary Dashboard ───────────────────────── */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            {/* ── Summary Dashboard (3x2 grid) ──────────────── */}
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
               {/* Total Edits */}
               <div className="bg-[#111827]/60 border border-[#1E293B] rounded-xl p-5 text-center">
                 <p className="text-xs font-mono tracking-wider text-slate-500 uppercase mb-2">
@@ -545,6 +657,43 @@ export default function GenomeArchitectPage() {
                   {editPlan.estimatedGenerations} generations
                 </p>
               </div>
+
+              {/* Risk Score */}
+              <div
+                className={`bg-[#111827]/60 border rounded-xl p-5 text-center ${riskScoreBg(
+                  analysis.overallRiskScore
+                )}`}
+              >
+                <p className="text-xs font-mono tracking-wider text-slate-500 uppercase mb-2">
+                  Risk Score
+                </p>
+                <p
+                  className={`text-3xl font-display font-bold ${riskScoreColor(
+                    analysis.overallRiskScore
+                  )}`}
+                >
+                  {analysis.overallRiskScore}
+                  <span className="text-sm text-slate-600">/10</span>
+                </p>
+                <p className="text-[11px] text-slate-600 font-body mt-1">
+                  overall biosafety
+                </p>
+              </div>
+
+              {/* Interactions */}
+              <div className="bg-[#111827]/60 border border-[#1E293B] rounded-xl p-5 text-center">
+                <p className="text-xs font-mono tracking-wider text-slate-500 uppercase mb-2">
+                  Interactions
+                </p>
+                <p className="text-3xl font-display font-bold text-purple-400">
+                  {analysis.interactions.length}
+                </p>
+                <p className="text-[11px] text-slate-600 font-body mt-1">
+                  {analysis.interactions.filter((i) => i.type === "synergistic").length} synergistic
+                  {" / "}
+                  {analysis.interactions.filter((i) => i.type === "antagonistic").length} antagonistic
+                </p>
+              </div>
             </div>
 
             {/* Summary text */}
@@ -557,66 +706,195 @@ export default function GenomeArchitectPage() {
               </p>
             </div>
 
-            {/* ── Edit Cards ──────────────────────────────── */}
-            <h3 className="text-lg font-display font-semibold text-slate-100 mb-5">
-              Planned Edits
-            </h3>
-            <div className="space-y-4 mb-10">
-              {editPlan.edits.map((edit) => {
-                const { gene, trait, priority } = edit;
-                const mechOpen = expandedMechanisms.has(gene.geneId);
-                return (
-                  <div
-                    key={gene.geneId}
-                    className="bg-[#111827]/60 border border-[#1E293B] rounded-xl overflow-hidden transition-all duration-300 hover:border-white/10"
-                  >
-                    <div className="p-5 sm:p-6">
-                      {/* Top row: priority + gene + edit type */}
-                      <div className="flex flex-wrap items-start gap-3 mb-4">
-                        {/* Priority badge */}
-                        <div
-                          className="w-8 h-8 rounded-lg flex items-center justify-center text-sm font-mono font-bold text-white shrink-0"
-                          style={{
-                            backgroundColor:
-                              selectedPlant.imageColor + "25",
-                            color: selectedPlant.imageColor,
-                          }}
+            {/* ── Tab Bar ───────────────────────────────────── */}
+            <div className="mb-8 overflow-x-auto scrollbar-hide">
+              <div className="flex gap-1 border-b border-[#1E293B] min-w-max">
+                {tabs.map((tab) => {
+                  const isActive = activeTab === tab.id;
+                  return (
+                    <button
+                      key={tab.id}
+                      onClick={() => setActiveTab(tab.id)}
+                      className={`relative flex items-center gap-2 px-4 py-3 text-sm font-body transition-all duration-200 whitespace-nowrap ${
+                        isActive
+                          ? "text-slate-100"
+                          : "text-slate-500 hover:text-slate-300"
+                      }`}
+                    >
+                      <svg
+                        className="w-4 h-4 shrink-0"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={1.5}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d={tab.icon} />
+                      </svg>
+                      <span>{tab.label}</span>
+                      {tab.badge !== undefined && tab.badge > 0 && (
+                        <span
+                          className={`text-[10px] font-mono px-1.5 py-0 rounded-full ${
+                            isActive
+                              ? "bg-emerald-500/20 text-emerald-400"
+                              : "bg-white/5 text-slate-600"
+                          }`}
                         >
-                          {priority}
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex flex-wrap items-center gap-2">
-                            <span className="text-lg font-mono font-bold text-slate-100">
-                              {gene.geneName}
-                            </span>
-                            <span
-                              className={`text-[10px] font-mono px-2 py-0.5 rounded-full border ${editTypeColor(
-                                gene.editType
-                              )}`}
+                          {tab.badge}
+                        </span>
+                      )}
+                      {/* Active underline */}
+                      <div
+                        className={`absolute bottom-0 left-2 right-2 h-0.5 rounded-full transition-all duration-300 ${
+                          isActive
+                            ? "bg-emerald-500 opacity-100"
+                            : "bg-transparent opacity-0"
+                        }`}
+                      />
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* ── Tab Content ───────────────────────────────── */}
+
+            {/* Plan tab — existing edit cards + genome viewer + CRISPR table */}
+            {activeTab === "plan" && (
+              <div className="animate-fade-in">
+                {/* ── Edit Cards ──────────────────────────────── */}
+                <h3 className="text-lg font-display font-semibold text-slate-100 mb-5">
+                  Planned Edits
+                </h3>
+                <div className="space-y-4 mb-10">
+                  {editPlan.edits.map((edit) => {
+                    const { gene, trait, priority } = edit;
+                    const mechOpen = expandedMechanisms.has(gene.geneId);
+                    return (
+                      <div
+                        key={gene.geneId}
+                        className="bg-[#111827]/60 border border-[#1E293B] rounded-xl overflow-hidden transition-all duration-300 hover:border-white/10"
+                      >
+                        <div className="p-5 sm:p-6">
+                          {/* Top row: priority + gene + edit type */}
+                          <div className="flex flex-wrap items-start gap-3 mb-4">
+                            {/* Priority badge */}
+                            <div
+                              className="w-8 h-8 rounded-lg flex items-center justify-center text-sm font-mono font-bold text-white shrink-0"
+                              style={{
+                                backgroundColor:
+                                  selectedPlant.imageColor + "25",
+                                color: selectedPlant.imageColor,
+                              }}
                             >
-                              {editTypeLabel(gene.editType)}
-                            </span>
+                              {priority}
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="flex flex-wrap items-center gap-2">
+                                <span className="text-lg font-mono font-bold text-slate-100">
+                                  {gene.geneName}
+                                </span>
+                                <span
+                                  className={`text-[10px] font-mono px-2 py-0.5 rounded-full border ${editTypeColor(
+                                    gene.editType
+                                  )}`}
+                                >
+                                  {editTypeLabel(gene.editType)}
+                                </span>
+                              </div>
+                              <p className="text-xs text-slate-500 font-body mt-0.5">
+                                {gene.fullName}
+                              </p>
+                            </div>
+                            {/* Confidence + Risk on right */}
+                            <div className="flex items-center gap-2 shrink-0">
+                              <span
+                                className={`text-[10px] font-mono px-2 py-0.5 rounded-full border ${confidenceColor(
+                                  gene.confidence
+                                )}`}
+                              >
+                                {gene.confidence}
+                              </span>
+                              <div
+                                className={`flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded-full ${riskBg(
+                                  gene.offTargetRisk
+                                )} ${riskColor(gene.offTargetRisk)}`}
+                              >
+                                <svg
+                                  className="w-3 h-3"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                  strokeWidth={2}
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"
+                                  />
+                                </svg>
+                                OT: {gene.offTargetRisk}
+                              </div>
+                            </div>
                           </div>
-                          <p className="text-xs text-slate-500 font-body mt-0.5">
-                            {gene.fullName}
+
+                          {/* Trait + Chromosome row */}
+                          <div className="flex flex-wrap items-center gap-4 mb-4 text-xs">
+                            <div className="flex items-center gap-1.5 font-body text-slate-400">
+                              <span
+                                className="w-2 h-2 rounded-full shrink-0"
+                                style={{ backgroundColor: trait.color }}
+                              />
+                              {trait.name}
+                            </div>
+                            <div className="flex items-center gap-1.5 font-mono text-slate-500">
+                              <svg
+                                className="w-3.5 h-3.5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                strokeWidth={1.5}
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+                                />
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+                                />
+                              </svg>
+                              {gene.chromosome} @ {Math.round(gene.position * 100)}%
+                            </div>
+                          </div>
+
+                          {/* Edit description */}
+                          <p className="text-xs text-slate-400 font-body leading-relaxed mb-4">
+                            {gene.editDescription}
                           </p>
-                        </div>
-                        {/* Confidence + Risk on right */}
-                        <div className="flex items-center gap-2 shrink-0">
-                          <span
-                            className={`text-[10px] font-mono px-2 py-0.5 rounded-full border ${confidenceColor(
-                              gene.confidence
-                            )}`}
-                          >
-                            {gene.confidence}
-                          </span>
-                          <div
-                            className={`flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded-full ${riskBg(
-                              gene.offTargetRisk
-                            )} ${riskColor(gene.offTargetRisk)}`}
+
+                          {/* Expected Outcome */}
+                          <div className="bg-[#0A0F1E]/60 rounded-lg px-4 py-3 mb-4">
+                            <p className="text-[10px] font-mono tracking-wider text-slate-600 uppercase mb-1">
+                              Expected Outcome
+                            </p>
+                            <p className="text-xs text-slate-300 font-body leading-relaxed">
+                              {gene.expectedOutcome}
+                            </p>
+                          </div>
+
+                          {/* Mechanism expandable */}
+                          <button
+                            onClick={() => toggleMechanism(gene.geneId)}
+                            className="flex items-center gap-2 text-xs font-body text-slate-500 hover:text-slate-300 transition-colors mb-3"
                           >
                             <svg
-                              className="w-3 h-3"
+                              className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                                mechOpen ? "rotate-90" : ""
+                              }`}
                               fill="none"
                               viewBox="0 0 24 24"
                               stroke="currentColor"
@@ -625,223 +903,213 @@ export default function GenomeArchitectPage() {
                               <path
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
-                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"
+                                d="M9 5l7 7-7 7"
                               />
                             </svg>
-                            OT: {gene.offTargetRisk}
+                            Mechanism
+                          </button>
+                          {mechOpen && (
+                            <div className="bg-[#0A0F1E]/60 rounded-lg px-4 py-3 mb-4 animate-fade-in">
+                              <p className="text-xs text-slate-400 font-body leading-relaxed">
+                                {gene.mechanism}
+                              </p>
+                            </div>
+                          )}
+
+                          {/* Guide RNA */}
+                          <div className="bg-[#070B14] rounded-lg px-4 py-3 border border-[#1E293B]/60">
+                            <p className="text-[10px] font-mono tracking-wider text-slate-600 uppercase mb-2">
+                              Guide RNA + PAM
+                            </p>
+                            <div className="flex items-center gap-1 flex-wrap">
+                              <span className="font-mono text-sm text-emerald-400 tracking-widest">
+                                {gene.guideRNASequence}
+                              </span>
+                              <span className="font-mono text-sm text-red-400 tracking-widest bg-red-500/10 px-1.5 py-0.5 rounded">
+                                {gene.pamSite}
+                              </span>
+                            </div>
                           </div>
                         </div>
                       </div>
+                    );
+                  })}
+                </div>
 
-                      {/* Trait + Chromosome row */}
-                      <div className="flex flex-wrap items-center gap-4 mb-4 text-xs">
-                        <div className="flex items-center gap-1.5 font-body text-slate-400">
-                          <span
-                            className="w-2 h-2 rounded-full shrink-0"
-                            style={{ backgroundColor: trait.color }}
-                          />
-                          {trait.name}
-                        </div>
-                        <div className="flex items-center gap-1.5 font-mono text-slate-500">
-                          <svg
-                            className="w-3.5 h-3.5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={1.5}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
-                            />
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
-                            />
-                          </svg>
-                          {gene.chromosome} @ {Math.round(gene.position * 100)}%
-                        </div>
-                      </div>
+                {/* ── Genome Edit Visualization ────────────────── */}
+                <div className="mb-10">
+                  <h3 className="text-lg font-display font-semibold text-slate-100 mb-5">
+                    Genome Edit Visualization
+                  </h3>
+                  <div className="h-[500px] bg-[#111827]/60 border border-[#1E293B] rounded-xl overflow-hidden">
+                    <GenomeEditViewerWrapper
+                      plantId={selectedPlant.id}
+                      edits={editPlan.edits as unknown as Parameters<typeof GenomeEditViewerWrapper>[0]["edits"]}
+                      accentColor={selectedPlant.imageColor}
+                    />
+                  </div>
+                </div>
 
-                      {/* Edit description */}
-                      <p className="text-xs text-slate-400 font-body leading-relaxed mb-4">
-                        {gene.editDescription}
-                      </p>
-
-                      {/* Expected Outcome */}
-                      <div className="bg-[#0A0F1E]/60 rounded-lg px-4 py-3 mb-4">
-                        <p className="text-[10px] font-mono tracking-wider text-slate-600 uppercase mb-1">
-                          Expected Outcome
-                        </p>
-                        <p className="text-xs text-slate-300 font-body leading-relaxed">
-                          {gene.expectedOutcome}
-                        </p>
-                      </div>
-
-                      {/* Mechanism expandable */}
-                      <button
-                        onClick={() => toggleMechanism(gene.geneId)}
-                        className="flex items-center gap-2 text-xs font-body text-slate-500 hover:text-slate-300 transition-colors mb-3"
-                      >
-                        <svg
-                          className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                            mechOpen ? "rotate-90" : ""
-                          }`}
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          strokeWidth={2}
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M9 5l7 7-7 7"
-                          />
-                        </svg>
-                        Mechanism
-                      </button>
-                      {mechOpen && (
-                        <div className="bg-[#0A0F1E]/60 rounded-lg px-4 py-3 mb-4 animate-fade-in">
-                          <p className="text-xs text-slate-400 font-body leading-relaxed">
-                            {gene.mechanism}
-                          </p>
-                        </div>
-                      )}
-
-                      {/* Guide RNA */}
-                      <div className="bg-[#070B14] rounded-lg px-4 py-3 border border-[#1E293B]/60">
-                        <p className="text-[10px] font-mono tracking-wider text-slate-600 uppercase mb-2">
-                          Guide RNA + PAM
-                        </p>
-                        <div className="flex items-center gap-1 flex-wrap">
-                          <span className="font-mono text-sm text-emerald-400 tracking-widest">
-                            {gene.guideRNASequence}
-                          </span>
-                          <span className="font-mono text-sm text-red-400 tracking-widest bg-red-500/10 px-1.5 py-0.5 rounded">
-                            {gene.pamSite}
-                          </span>
-                        </div>
-                      </div>
+                {/* ── CRISPR Guide Summary Table ───────────────── */}
+                <div className="mb-10">
+                  <h3 className="text-lg font-display font-semibold text-slate-100 mb-5">
+                    CRISPR Guide Summary
+                  </h3>
+                  <div className="bg-[#111827]/60 border border-[#1E293B] rounded-xl overflow-hidden">
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-xs font-mono">
+                        <thead>
+                          <tr className="border-b border-[#1E293B]">
+                            <th className="px-4 py-3 text-left text-[10px] tracking-wider text-slate-600 uppercase font-semibold">
+                              #
+                            </th>
+                            <th className="px-4 py-3 text-left text-[10px] tracking-wider text-slate-600 uppercase font-semibold">
+                              Gene
+                            </th>
+                            <th className="px-4 py-3 text-left text-[10px] tracking-wider text-slate-600 uppercase font-semibold">
+                              Edit
+                            </th>
+                            <th className="px-4 py-3 text-left text-[10px] tracking-wider text-slate-600 uppercase font-semibold">
+                              Locus
+                            </th>
+                            <th className="px-4 py-3 text-left text-[10px] tracking-wider text-slate-600 uppercase font-semibold">
+                              Guide RNA (5&apos; &rarr; 3&apos;)
+                            </th>
+                            <th className="px-4 py-3 text-left text-[10px] tracking-wider text-slate-600 uppercase font-semibold">
+                              PAM
+                            </th>
+                            <th className="px-4 py-3 text-left text-[10px] tracking-wider text-slate-600 uppercase font-semibold">
+                              Conf.
+                            </th>
+                            <th className="px-4 py-3 text-left text-[10px] tracking-wider text-slate-600 uppercase font-semibold">
+                              OT Risk
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {editPlan.edits.map((edit) => (
+                            <tr
+                              key={edit.gene.geneId}
+                              className="border-b border-[#1E293B]/50 hover:bg-white/[0.02] transition-colors"
+                            >
+                              <td className="px-4 py-3 text-slate-600">
+                                {edit.priority}
+                              </td>
+                              <td className="px-4 py-3 text-slate-200 font-semibold">
+                                {edit.gene.geneName}
+                              </td>
+                              <td className="px-4 py-3">
+                                <span
+                                  className={`px-1.5 py-0.5 rounded text-[10px] border ${editTypeColor(
+                                    edit.gene.editType
+                                  )}`}
+                                >
+                                  {editTypeLabel(edit.gene.editType)}
+                                </span>
+                              </td>
+                              <td className="px-4 py-3 text-slate-500">
+                                {edit.gene.chromosome}:{Math.round(edit.gene.position * 100)}%
+                              </td>
+                              <td className="px-4 py-3">
+                                <span className="text-emerald-400 tracking-wider bg-[#070B14] px-2 py-1 rounded">
+                                  {edit.gene.guideRNASequence}
+                                </span>
+                              </td>
+                              <td className="px-4 py-3">
+                                <span className="text-red-400 bg-red-500/10 px-1.5 py-0.5 rounded">
+                                  {edit.gene.pamSite}
+                                </span>
+                              </td>
+                              <td className="px-4 py-3">
+                                <span
+                                  className={`${
+                                    edit.gene.confidence === "high"
+                                      ? "text-green-400"
+                                      : edit.gene.confidence === "medium"
+                                      ? "text-yellow-400"
+                                      : "text-orange-400"
+                                  }`}
+                                >
+                                  {edit.gene.confidence}
+                                </span>
+                              </td>
+                              <td className="px-4 py-3">
+                                <span className={riskColor(edit.gene.offTargetRisk)}>
+                                  {edit.gene.offTargetRisk}
+                                </span>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
                     </div>
                   </div>
-                );
-              })}
-            </div>
-
-            {/* ── Genome Edit Visualization ────────────────── */}
-            <div className="mb-10">
-              <h3 className="text-lg font-display font-semibold text-slate-100 mb-5">
-                Genome Edit Visualization
-              </h3>
-              <div className="h-[500px] bg-[#111827]/60 border border-[#1E293B] rounded-xl overflow-hidden">
-                <GenomeEditViewerWrapper
-                  plantId={selectedPlant.id}
-                  edits={editPlan.edits as unknown as Parameters<typeof GenomeEditViewerWrapper>[0]["edits"]}
-                  accentColor={selectedPlant.imageColor}
-                />
-              </div>
-            </div>
-
-            {/* ── CRISPR Guide Summary Table ───────────────── */}
-            <div className="mb-10">
-              <h3 className="text-lg font-display font-semibold text-slate-100 mb-5">
-                CRISPR Guide Summary
-              </h3>
-              <div className="bg-[#111827]/60 border border-[#1E293B] rounded-xl overflow-hidden">
-                <div className="overflow-x-auto">
-                  <table className="w-full text-xs font-mono">
-                    <thead>
-                      <tr className="border-b border-[#1E293B]">
-                        <th className="px-4 py-3 text-left text-[10px] tracking-wider text-slate-600 uppercase font-semibold">
-                          #
-                        </th>
-                        <th className="px-4 py-3 text-left text-[10px] tracking-wider text-slate-600 uppercase font-semibold">
-                          Gene
-                        </th>
-                        <th className="px-4 py-3 text-left text-[10px] tracking-wider text-slate-600 uppercase font-semibold">
-                          Edit
-                        </th>
-                        <th className="px-4 py-3 text-left text-[10px] tracking-wider text-slate-600 uppercase font-semibold">
-                          Locus
-                        </th>
-                        <th className="px-4 py-3 text-left text-[10px] tracking-wider text-slate-600 uppercase font-semibold">
-                          Guide RNA (5&apos; &rarr; 3&apos;)
-                        </th>
-                        <th className="px-4 py-3 text-left text-[10px] tracking-wider text-slate-600 uppercase font-semibold">
-                          PAM
-                        </th>
-                        <th className="px-4 py-3 text-left text-[10px] tracking-wider text-slate-600 uppercase font-semibold">
-                          Conf.
-                        </th>
-                        <th className="px-4 py-3 text-left text-[10px] tracking-wider text-slate-600 uppercase font-semibold">
-                          OT Risk
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {editPlan.edits.map((edit) => (
-                        <tr
-                          key={edit.gene.geneId}
-                          className="border-b border-[#1E293B]/50 hover:bg-white/[0.02] transition-colors"
-                        >
-                          <td className="px-4 py-3 text-slate-600">
-                            {edit.priority}
-                          </td>
-                          <td className="px-4 py-3 text-slate-200 font-semibold">
-                            {edit.gene.geneName}
-                          </td>
-                          <td className="px-4 py-3">
-                            <span
-                              className={`px-1.5 py-0.5 rounded text-[10px] border ${editTypeColor(
-                                edit.gene.editType
-                              )}`}
-                            >
-                              {editTypeLabel(edit.gene.editType)}
-                            </span>
-                          </td>
-                          <td className="px-4 py-3 text-slate-500">
-                            {edit.gene.chromosome}:{Math.round(edit.gene.position * 100)}%
-                          </td>
-                          <td className="px-4 py-3">
-                            <span className="text-emerald-400 tracking-wider bg-[#070B14] px-2 py-1 rounded">
-                              {edit.gene.guideRNASequence}
-                            </span>
-                          </td>
-                          <td className="px-4 py-3">
-                            <span className="text-red-400 bg-red-500/10 px-1.5 py-0.5 rounded">
-                              {edit.gene.pamSite}
-                            </span>
-                          </td>
-                          <td className="px-4 py-3">
-                            <span
-                              className={`${
-                                edit.gene.confidence === "high"
-                                  ? "text-green-400"
-                                  : edit.gene.confidence === "medium"
-                                  ? "text-yellow-400"
-                                  : "text-orange-400"
-                              }`}
-                            >
-                              {edit.gene.confidence}
-                            </span>
-                          </td>
-                          <td className="px-4 py-3">
-                            <span className={riskColor(edit.gene.offTargetRisk)}>
-                              {edit.gene.offTargetRisk}
-                            </span>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
                 </div>
               </div>
-            </div>
+            )}
+
+            {/* Interactions tab */}
+            {activeTab === "interactions" && (
+              <div className="animate-fade-in">
+                <InteractionMatrix
+                  interactions={analysis.interactions}
+                  geneNames={geneNameMap}
+                />
+              </div>
+            )}
+
+            {/* Implementation tab */}
+            {activeTab === "implementation" && (
+              <div className="animate-fade-in">
+                <DeliveryPanel strategy={analysis.deliveryStrategy} />
+                <StackingPanel plan={analysis.stackingPlan} />
+                <RegulatoryPanel
+                  classifications={analysis.regulatoryClassifications}
+                />
+              </div>
+            )}
+
+            {/* Phenotype tab */}
+            {activeTab === "phenotype" && (
+              <div className="animate-fade-in">
+                <PhenotypePanel
+                  predictions={analysis.phenotypePredictions}
+                  traitNames={traitNameMap}
+                />
+                <ExpressionProfilePanel
+                  profiles={analysis.expressionProfiles}
+                  geneNames={geneNameMap}
+                />
+                <WildRelativesPanel relatives={analysis.wildRelatives} />
+              </div>
+            )}
+
+            {/* Pathways tab */}
+            {activeTab === "pathways" && (
+              <div className="animate-fade-in">
+                <PathwayImpactPanel
+                  impacts={analysis.pathwayImpacts}
+                  geneNames={geneNameMap}
+                />
+              </div>
+            )}
+
+            {/* Risk & Safety tab */}
+            {activeTab === "risk" && (
+              <div className="animate-fade-in">
+                <BiosafetySummary
+                  riskScore={analysis.overallRiskScore}
+                  concerns={analysis.biosafetyConcerns}
+                />
+                <LiteraturePanel
+                  refs={analysis.literatureRefs}
+                  geneNames={geneNameMap}
+                />
+              </div>
+            )}
 
             {/* ── Navigation buttons ──────────────────────── */}
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between mt-8">
               <button
                 onClick={goBack}
                 className="text-sm text-slate-500 hover:text-slate-300 font-body transition-colors flex items-center gap-2"

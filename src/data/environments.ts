@@ -216,6 +216,105 @@ export const traits: Trait[] = [
         guideRNASequence: "GATTCCGAATCGTTACGGAC",
         pamSite: "TGG",
       },
+      // Rice drought
+      {
+        geneId: "os-osdreb2a",
+        geneName: "OsDREB2A",
+        fullName: "Oryza sativa Dehydration-Responsive Element Binding 2A",
+        genomeId: "rice",
+        chromosome: "Chr 3",
+        position: 0.28,
+        editType: "point-mutation",
+        editDescription:
+          "Delete NRD to create constitutively active OsDREB2A-CA, analogous to Arabidopsis DREB2A strategy.",
+        mechanism:
+          "Activates DRE/CRT-containing drought-responsive genes including OsLEA3, OsP5CS (proline synthesis), and OsNAC transcription factors. Critical for maintaining grain fill under terminal drought.",
+        confidence: "high",
+        expectedOutcome:
+          "30-50% yield maintenance under moderate drought stress. Improved grain fill under terminal drought conditions common in rainfed rice.",
+        offTargetRisk: "low",
+        guideRNASequence: "ATCGATCCGTAAGCTTGCCA",
+        pamSite: "TGG",
+      },
+      {
+        geneId: "os-osnac9",
+        geneName: "OsNAC9/SNAC1",
+        fullName: "Stress-responsive NAC Transcription Factor",
+        genomeId: "rice",
+        chromosome: "Chr 3",
+        position: 0.65,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress OsNAC9 under root-specific RCc3 promoter for enhanced root depth without shoot growth penalty.",
+        mechanism:
+          "OsNAC9 activates root-specific gene network increasing root depth, lateral root number, and root diameter. Root-specific expression avoids the dwarf phenotype seen with constitutive overexpression.",
+        confidence: "high",
+        expectedOutcome:
+          "20% deeper root system. Enhanced water uptake from deeper soil layers. Yield maintained under moderate drought in field trials (Redillas et al., 2012).",
+        offTargetRisk: "low",
+        guideRNASequence: "GCTAACGGATCCGAATTCGA",
+        pamSite: "AGG",
+      },
+      // Maize drought
+      {
+        geneId: "zm-zmnac111",
+        geneName: "ZmNAC111",
+        fullName: "Zea mays NAC Domain Transcription Factor 111",
+        genomeId: "maize",
+        chromosome: "Chr 1",
+        position: 0.78,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress ZmNAC111 under drought-inducible promoter to enhance drought-responsive gene expression.",
+        mechanism:
+          "ZmNAC111 is a natural variation drought tolerance gene identified through GWAS. It activates downstream drought-responsive genes and is silenced by a MITE transposon insertion in drought-sensitive lines.",
+        confidence: "high",
+        expectedOutcome:
+          "Improved drought tolerance equivalent to donor lines. Natural allele — strong evolutionary validation.",
+        offTargetRisk: "low",
+        guideRNASequence: "CCGAATTCGACTGGAATCCA",
+        pamSite: "TGG",
+      },
+      // Wheat drought
+      {
+        geneId: "tw-tadreb1",
+        geneName: "TaDREB1",
+        fullName: "Triticum aestivum DREB1 (all 3 homeologs)",
+        genomeId: "wheat",
+        chromosome: "Chr 2A",
+        position: 0.32,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress TaDREB1 under stress-inducible RD29A promoter for enhanced drought/cold tolerance.",
+        mechanism:
+          "TaDREB1 activates COR/LEA gene expression across all three subgenomes. Stress-inducible promoter avoids constitutive growth penalty.",
+        confidence: "medium",
+        expectedOutcome:
+          "Enhanced drought and cold tolerance. Must be carefully titrated to avoid yield penalty from constitutive activation.",
+        offTargetRisk: "low",
+        guideRNASequence: "TGCCAATCGGATCCTTAAGG",
+        pamSite: "CGG",
+      },
+      // Tomato drought
+      {
+        geneId: "sl-sldreb2",
+        geneName: "SlDREB2",
+        fullName: "Solanum lycopersicum DREB2",
+        genomeId: "tomato",
+        chromosome: "Chr 3",
+        position: 0.4,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress SlDREB2 under drought-inducible promoter for enhanced water-use efficiency in tomato.",
+        mechanism:
+          "SlDREB2 activates drought-responsive genes including LEA, P5CS, and aquaporin genes. Critical for maintaining fruit quality under deficit irrigation.",
+        confidence: "medium",
+        expectedOutcome:
+          "Maintained fruit yield and quality under 50% reduced irrigation. Important for water-scarce tomato production regions.",
+        offTargetRisk: "low",
+        guideRNASequence: "GATCCGTTAAGCTGATTCGA",
+        pamSite: "AGG",
+      },
     ],
   },
 
@@ -304,6 +403,46 @@ export const traits: Trait[] = [
           "Bud survival improved at temperatures 2-3°C lower. Reduced spring frost losses.",
         offTargetRisk: "low",
         guideRNASequence: "GCCTAAGGATTCGATCCGAT",
+        pamSite: "CGG",
+      },
+      // Rice cold
+      {
+        geneId: "os-oscbf3",
+        geneName: "OsCBF3/OsDREB1A",
+        fullName: "Oryza sativa C-repeat Binding Factor 3",
+        genomeId: "rice",
+        chromosome: "Chr 7",
+        position: 0.72,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress OsCBF3 under cold-inducible OsCOR15 promoter for cold tolerance at seedling stage.",
+        mechanism:
+          "OsCBF3 activates cold-regulated genes in rice. Seedling-stage cold damage is the primary constraint for temperate rice expansion.",
+        confidence: "medium",
+        expectedOutcome:
+          "Survival of seedling-stage cold snaps (10°C for 5 days). Critical for direct-seeded rice in temperate regions.",
+        offTargetRisk: "low",
+        guideRNASequence: "CCGATTTCAAGGCTAACGTA",
+        pamSite: "TGG",
+      },
+      // Tomato cold
+      {
+        geneId: "sl-slcbf1",
+        geneName: "SlCBF1",
+        fullName: "Solanum lycopersicum CBF1",
+        genomeId: "tomato",
+        chromosome: "Chr 11",
+        position: 0.65,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress SlCBF1 for chilling tolerance during early transplant season.",
+        mechanism:
+          "SlCBF1 induces cold-responsive genes. Tomato is extremely chilling-sensitive — even 4°C causes irreversible damage.",
+        confidence: "medium",
+        expectedOutcome:
+          "Chilling tolerance at 4°C for 48h (vs damage at 10°C in WT). Earlier transplanting season.",
+        offTargetRisk: "low",
+        guideRNASequence: "AATCGGATCCTTAGGCCAAT",
         pamSite: "CGG",
       },
     ],
@@ -395,6 +534,65 @@ export const traits: Trait[] = [
         offTargetRisk: "low",
         guideRNASequence: "TCCGATGCTAACGGATCCGA",
         pamSite: "AGG",
+      },
+      // Rice salt
+      {
+        geneId: "os-oshkt1-5",
+        geneName: "OsHKT1;5",
+        fullName: "Oryza sativa High-affinity K+ Transporter 1;5",
+        genomeId: "rice",
+        chromosome: "Chr 4",
+        position: 0.68,
+        editType: "promoter-swap",
+        editDescription:
+          "Enhance OsHKT1;5 expression in root stele for improved Na+ retrieval from xylem — the Saltol QTL mechanism.",
+        mechanism:
+          "OsHKT1;5 underlies the Saltol QTL from rice landrace 'Pokkali'. Enhanced expression retrieves Na+ from xylem before it reaches shoots.",
+        confidence: "high",
+        expectedOutcome:
+          "50% reduction in shoot Na+. Major component of salt tolerance already validated in millions of hectares of Saltol-introgressed varieties.",
+        offTargetRisk: "low",
+        guideRNASequence: "GCTAACGGATCCGAATTCGA",
+        pamSite: "TGG",
+      },
+      {
+        geneId: "os-osnhx1",
+        geneName: "OsNHX1",
+        fullName: "Oryza sativa Vacuolar Na+/H+ Antiporter",
+        genomeId: "rice",
+        chromosome: "Chr 1",
+        position: 0.35,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress OsNHX1 for enhanced vacuolar Na+ compartmentalization in rice.",
+        mechanism:
+          "Vacuolar Na+ sequestration in rice leaf cells, maintaining low cytoplasmic Na+ for continued photosynthesis.",
+        confidence: "high",
+        expectedOutcome:
+          "Continued growth at 150mM NaCl in hydroponic and soil conditions.",
+        offTargetRisk: "low",
+        guideRNASequence: "TCGAAGTCCATGCTAACGGT",
+        pamSite: "AGG",
+      },
+      // Tomato salt
+      {
+        geneId: "sl-slnhx2",
+        geneName: "SlNHX2",
+        fullName: "Solanum lycopersicum Vacuolar Na+/H+ Exchanger 2",
+        genomeId: "tomato",
+        chromosome: "Chr 5",
+        position: 0.65,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress SlNHX2 for salt tolerance in tomato under saline irrigation.",
+        mechanism:
+          "Vacuolar Na+ sequestration in tomato maintains fruit quality under salinity.",
+        confidence: "medium",
+        expectedOutcome:
+          "Maintained fruit yield at 100mM NaCl. Improved fruit flavor (controlled salt stress enhances sugar/acid balance).",
+        offTargetRisk: "low",
+        guideRNASequence: "CGATCCGAATTCAAGCTGAT",
+        pamSite: "TGG",
       },
     ],
   },
@@ -518,6 +716,66 @@ export const traits: Trait[] = [
         guideRNASequence: "CCGGATCCGAATTCAAGGCT",
         pamSite: "CGG",
       },
+      // Rice heat
+      {
+        geneId: "os-oshsfa2d",
+        geneName: "OsHSFA2d",
+        fullName: "Oryza sativa Heat Shock Factor A2d",
+        genomeId: "rice",
+        chromosome: "Chr 3",
+        position: 0.5,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress OsHSFA2d for enhanced thermotolerance during flowering — the critical heat-sensitive stage in rice.",
+        mechanism:
+          "OsHSFA2d activates HSP network in anthers and pollen. Heat during flowering causes pollen sterility (>35°C), the primary cause of heat-induced yield loss in rice.",
+        confidence: "medium",
+        expectedOutcome:
+          "Maintained pollen fertility at 38°C (vs sterility at 35°C in WT). Critical adaptation for rice in warming tropics.",
+        offTargetRisk: "low",
+        guideRNASequence: "CGAATTCGGATCCGTTAAGG",
+        pamSite: "TGG",
+      },
+      // Tomato heat
+      {
+        geneId: "sl-slhsfa1a",
+        geneName: "SlHSFA1a",
+        fullName: "Solanum lycopersicum Heat Shock Factor A1a",
+        genomeId: "tomato",
+        chromosome: "Chr 9",
+        position: 0.72,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress the master heat stress regulator SlHSFA1a for enhanced fruit set under heat waves.",
+        mechanism:
+          "SlHSFA1a is the master regulator of heat shock response in tomato (Mishra et al., 2002). Controls HSP network essential for pollen development at high temperatures.",
+        confidence: "high",
+        expectedOutcome:
+          "Maintained fruit set at 38°C during heat waves. Reduced blossom drop. Critical for summer tomato production.",
+        offTargetRisk: "low",
+        guideRNASequence: "TTAAGCTGATTCGAATCCGG",
+        pamSite: "AGG",
+      },
+      // Maize heat
+      {
+        geneId: "zm-zmhsp101",
+        geneName: "ZmHSP101",
+        fullName: "Zea mays Heat Shock Protein 101 (ClpB chaperone)",
+        genomeId: "maize",
+        chromosome: "Chr 8",
+        position: 0.38,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress ZmHSP101 disaggregase for enhanced acquired thermotolerance in maize.",
+        mechanism:
+          "ZmHSP101 is a ClpB-type AAA+ ATPase that disaggregates heat-damaged protein aggregates, enabling refolding by HSP70/HSP40. Essential for acquired thermotolerance.",
+        confidence: "high",
+        expectedOutcome:
+          "Enhanced recovery from heat shock events. Maintained tassel fertility at 40°C.",
+        offTargetRisk: "low",
+        guideRNASequence: "GCTGATTCGAATCCGGATCC",
+        pamSite: "CGG",
+      },
     ],
   },
 
@@ -567,6 +825,46 @@ export const traits: Trait[] = [
           "20-30% increase in nitrogen assimilation rate. Higher amino acid content in edible tissues.",
         offTargetRisk: "low",
         guideRNASequence: "TCCGAATCGATGCTAACGGA",
+        pamSite: "TGG",
+      },
+      // Rice nutrient efficiency
+      {
+        geneId: "os-osnrt1-1b",
+        geneName: "OsNRT1.1B",
+        fullName: "Oryza sativa Nitrate Transporter 1.1B",
+        genomeId: "rice",
+        chromosome: "Chr 10",
+        position: 0.65,
+        editType: "point-mutation",
+        editDescription:
+          "Introduce indica-type OsNRT1.1B allele (Met327 variant) for enhanced nitrate uptake and nitrogen use efficiency.",
+        mechanism:
+          "Natural indica/japonica variation: indica OsNRT1.1B (Met327) has higher nitrate transport activity than japonica (Thr327). This single amino acid change explains ~20% of indica-japonica NUE difference.",
+        confidence: "high",
+        expectedOutcome:
+          "15-20% improved nitrogen use efficiency. Maintains yield with 20% less fertilizer — crucial for reducing agricultural nitrogen pollution.",
+        offTargetRisk: "low",
+        guideRNASequence: "TCCGAATCGATGCTAACGGA",
+        pamSite: "AGG",
+      },
+      // Maize nutrient efficiency
+      {
+        geneId: "zm-zmnrt1-1b",
+        geneName: "ZmNRT1.1B",
+        fullName: "Zea mays Nitrate Transporter 1.1B",
+        genomeId: "maize",
+        chromosome: "Chr 10",
+        position: 0.65,
+        editType: "point-mutation",
+        editDescription:
+          "Enhance ZmNRT1.1B nitrate transport activity via targeted amino acid substitution.",
+        mechanism:
+          "Analogous to rice NRT1.1B enhancement. Maize is the largest consumer of nitrogen fertilizer — even modest NUE improvements have enormous environmental impact.",
+        confidence: "medium",
+        expectedOutcome:
+          "10-15% improved NUE. Reduced nitrogen fertilizer requirement for maize production.",
+        offTargetRisk: "low",
+        guideRNASequence: "GCTAACGGTCGAATCCGATC",
         pamSite: "TGG",
       },
     ],
@@ -641,6 +939,66 @@ export const traits: Trait[] = [
         guideRNASequence: "CGAATCCGTTAAGCTGATCC",
         pamSite: "TGG",
       },
+      // Rice disease
+      {
+        geneId: "os-oswr45",
+        geneName: "OsWRKY45",
+        fullName: "Oryza sativa WRKY Transcription Factor 45",
+        genomeId: "rice",
+        chromosome: "Chr 9",
+        position: 0.6,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress OsWRKY45 under pathogen-inducible promoter for broad-spectrum blast and bacterial blight resistance.",
+        mechanism:
+          "OsWRKY45 is the central regulator of SA-dependent defense in rice (analogous to NPR1 in Arabidopsis but functionally distinct). Activates defense genes against Magnaporthe oryzae (blast) and Xanthomonas oryzae (blight).",
+        confidence: "high",
+        expectedOutcome:
+          "Strong resistance to rice blast and bacterial leaf blight — the two most devastating rice diseases worldwide.",
+        offTargetRisk: "low",
+        guideRNASequence: "AACGGATCCGAATTCAAGCT",
+        pamSite: "TGG",
+      },
+      // Wheat disease
+      {
+        geneId: "tw-tanpr1",
+        geneName: "TaNPR1",
+        fullName: "Triticum aestivum NPR1",
+        genomeId: "wheat",
+        chromosome: "Chr 7A",
+        position: 0.72,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress TaNPR1 for enhanced systemic acquired resistance against rust and Fusarium.",
+        mechanism:
+          "TaNPR1 primes SA signaling for faster defense activation against biotrophic pathogens (rusts) and hemibiotrophic pathogens (Fusarium head blight).",
+        confidence: "medium",
+        expectedOutcome:
+          "Reduced severity of stripe rust and Fusarium head blight. Must be combined with R-genes for full resistance.",
+        offTargetRisk: "low",
+        guideRNASequence: "GATCCGAATTCGAATCCGTT",
+        pamSite: "AGG",
+      },
+      // Tomato disease
+      {
+        geneId: "sl-slnpr1",
+        geneName: "SlNPR1",
+        fullName: "Solanum lycopersicum NPR1",
+        genomeId: "tomato",
+        chromosome: "Chr 1",
+        position: 0.7,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress SlNPR1 for broad-spectrum resistance against bacterial speck, early blight, and powdery mildew.",
+        mechanism:
+          "SlNPR1 enhances SA-mediated defense priming in tomato. Broad-spectrum efficacy against multiple pathogen classes.",
+        confidence: "high",
+        expectedOutcome:
+          "60-80% reduced disease severity. Reduced fungicide application. Important for organic tomato production.",
+        offTargetRisk: "medium",
+        guideRNASequence: "CGAATCCGTTAAGCTGATCC",
+        pamSite: "CGG",
+      },
     ],
   },
 
@@ -712,6 +1070,66 @@ export const traits: Trait[] = [
         guideRNASequence: "GATTCGAATCCGGATCCGTT",
         pamSite: "CGG",
       },
+      // Rice nutrition
+      {
+        geneId: "os-ospsy1",
+        geneName: "OsPSY1",
+        fullName: "Oryza sativa Phytoene Synthase 1 (Golden Rice)",
+        genomeId: "rice",
+        chromosome: "Chr 1",
+        position: 0.72,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress OsPSY1 (from maize ZmPSY1) under endosperm-specific Gt1 promoter — the Golden Rice strategy for provitamin A biofortification.",
+        mechanism:
+          "ZmPSY1 expression in rice endosperm, combined with bacterial CrtI (phytoene desaturase), produces β-carotene in normally carotenoid-free white rice endosperm. This is Golden Rice 2 (GR2) technology.",
+        confidence: "high",
+        expectedOutcome:
+          "37 μg/g β-carotene in polished rice (GR2). Addresses vitamin A deficiency affecting 250M children. Approved in Philippines, Australia, New Zealand, USA.",
+        offTargetRisk: "low",
+        guideRNASequence: "TCGATCCGAATTCAAGGCTA",
+        pamSite: "TGG",
+      },
+      // Maize nutrition
+      {
+        geneId: "zm-zmlcyb",
+        geneName: "ZmLCYB",
+        fullName: "Zea mays Lycopene β-Cyclase",
+        genomeId: "maize",
+        chromosome: "Chr 8",
+        position: 0.72,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress ZmLCYB to convert lycopene to β-carotene, enhancing provitamin A content in orange maize varieties.",
+        mechanism:
+          "ZmLCYB catalyzes lycopene cyclization. Natural variation in ZmLCYB underlies the difference between yellow (high β-carotene) and white (low β-carotene) maize kernel color.",
+        confidence: "high",
+        expectedOutcome:
+          "5-10x increased β-carotene in maize kernels. Biofortified orange maize already reaching millions through HarvestPlus program.",
+        offTargetRisk: "low",
+        guideRNASequence: "AAGCTGATTCGAATCCGATC",
+        pamSite: "AGG",
+      },
+      // Tomato nutrition
+      {
+        geneId: "sl-slpsy1",
+        geneName: "SlPSY1",
+        fullName: "Solanum lycopersicum Phytoene Synthase 1",
+        genomeId: "tomato",
+        chromosome: "Chr 1",
+        position: 0.35,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress fruit-specific SlPSY1 for enhanced lycopene and β-carotene content in tomato fruit.",
+        mechanism:
+          "SlPSY1 is the rate-limiting enzyme for carotenoid accumulation during tomato fruit ripening. Overexpression enhances both lycopene (antioxidant) and β-carotene (provitamin A).",
+        confidence: "high",
+        expectedOutcome:
+          "2-3x higher lycopene content. Enhanced red coloration and antioxidant capacity.",
+        offTargetRisk: "low",
+        guideRNASequence: "GATTCGAATCCGGATCCGTT",
+        pamSite: "TGG",
+      },
     ],
   },
 
@@ -763,6 +1181,46 @@ export const traits: Trait[] = [
         guideRNASequence: "TGATTCGAATCCGGATCCGA",
         pamSite: "TGG",
       },
+      // Rice yield
+      {
+        geneId: "os-osgw7",
+        geneName: "OsGW7/GL7",
+        fullName: "Oryza sativa Grain Width 7 / Grain Length 7",
+        genomeId: "rice",
+        chromosome: "Chr 7",
+        position: 0.45,
+        editType: "promoter-swap",
+        editDescription:
+          "Modify OsGW7 promoter to enhance expression for longer, slender grains with higher grain weight.",
+        mechanism:
+          "OsGW7 encodes a TONNEAU1-recruiting motif protein that controls cell division orientation in the spikelet hull. Enhanced expression produces longer grains with higher filling rate.",
+        confidence: "high",
+        expectedOutcome:
+          "10-15% increase in grain weight. Slender grain shape preferred in many Asian markets.",
+        offTargetRisk: "low",
+        guideRNASequence: "CCGAATCGATGCTAACGGAT",
+        pamSite: "CGG",
+      },
+      // Wheat yield
+      {
+        geneId: "tw-tagw2-ko",
+        geneName: "TaGW2",
+        fullName: "Triticum aestivum Grain Weight 2 (knockout all homeologs)",
+        genomeId: "wheat",
+        chromosome: "Chr 4A",
+        position: 0.75,
+        editType: "knockout",
+        editDescription:
+          "Knockout TaGW2 across all three homeologs (A, B, D) using multiplex CRISPR to increase grain size and yield.",
+        mechanism:
+          "TaGW2 encodes an E3 ubiquitin ligase that negatively regulates grain width. Knockout removes this negative regulation, allowing larger endosperm cell size. All three homeologs must be knocked out in hexaploid wheat.",
+        confidence: "high",
+        expectedOutcome:
+          "10-20% increase in grain weight. Demonstrated in Chinese wheat varieties (Zhang et al., 2018).",
+        offTargetRisk: "medium",
+        guideRNASequence: "TGATTCGAATCCGGATCCGA",
+        pamSite: "AGG",
+      },
     ],
   },
 
@@ -812,6 +1270,26 @@ export const traits: Trait[] = [
           "Enhanced aerenchyma in root cortex. Improved root oxygen supply under waterlogged conditions.",
         offTargetRisk: "high",
         guideRNASequence: "GCTGATTCGAATCCGGATCC",
+        pamSite: "AGG",
+      },
+      // Rice flood
+      {
+        geneId: "os-sub1a",
+        geneName: "SUB1A",
+        fullName: "Submergence Tolerance 1A (ERF-VII transcription factor)",
+        genomeId: "rice",
+        chromosome: "Chr 9",
+        position: 0.33,
+        editType: "insertion",
+        editDescription:
+          "Introduce SUB1A from submergence-tolerant landrace 'FR13A' into modern high-yielding varieties lacking the SUB1A allele.",
+        mechanism:
+          "SUB1A confers 'quiescence strategy': represses gibberellin-mediated elongation during submergence, conserving carbohydrate reserves for survival and rapid recovery after water recedes. Already deployed in millions of hectares via conventional breeding (SUB1 mega-varieties).",
+        confidence: "high",
+        expectedOutcome:
+          "Survival of 14 days complete submergence (vs 3-4 days in non-SUB1 varieties). No yield penalty under normal conditions. Already feeding 6 million farming families in South/Southeast Asia.",
+        offTargetRisk: "low",
+        guideRNASequence: "CCGTTAAGCTGATTCGAATC",
         pamSite: "AGG",
       },
     ],
