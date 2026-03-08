@@ -31,6 +31,22 @@ import {
   LiteraturePanel,
   BiosafetySummary,
 } from "@/components/architect/AnalysisPanels";
+import {
+  getPloidyInfo,
+  getRecommendedTools,
+  getOrthologsForGene,
+  getMultiplexStrategy,
+  getMorphogenicOptions,
+  getAllEditingTools,
+  getAllMultiplexStrategies,
+} from "@/data/advanced-genomics";
+import {
+  PloidyPanel,
+  EditingToolsPanel,
+  MultiplexPanel,
+  MorphogenicPanel,
+  OrthologPanel,
+} from "@/components/architect/AdvancedPanels";
 
 // ── Helpers ────────────────────────────────────────────────
 
@@ -290,6 +306,24 @@ export default function GenomeArchitectPage() {
         icon: "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z",
         badge: analysis.biosafetyConcerns.length > 0
           ? analysis.biosafetyConcerns.length
+          : undefined,
+      },
+      {
+        id: "genomics",
+        label: "Genomics",
+        icon: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+      },
+      {
+        id: "orthologs",
+        label: "Orthologs",
+        icon: "M4 6h16M4 10h16M4 14h16M4 18h16",
+      },
+      {
+        id: "literature",
+        label: "Literature",
+        icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253",
+        badge: analysis.literatureRefs.length > 0
+          ? analysis.literatureRefs.length
           : undefined,
       },
     ];
@@ -1101,6 +1135,61 @@ export default function GenomeArchitectPage() {
                   riskScore={analysis.overallRiskScore}
                   concerns={analysis.biosafetyConcerns}
                 />
+              </div>
+            )}
+
+            {/* Genomics tab */}
+            {activeTab === "genomics" && editPlan && selectedPlant && (
+              <div className="animate-fade-in space-y-6">
+                {(() => {
+                  const ploidy = getPloidyInfo(selectedPlant.id);
+                  const ploidyLevel = ploidy?.ploidyLevel ?? 2;
+                  const editTypes = new Set(editPlan.edits.map(e => e.gene.editType));
+                  const firstEditType = editPlan.edits[0]?.gene.editType ?? "knockout";
+                  const recommended = getRecommendedTools(firstEditType, ploidyLevel);
+                  const recommendedIds = recommended.map(t => t.id);
+                  const allTools = getAllEditingTools();
+                  const multiplex = getMultiplexStrategy(editPlan.totalEdits, ploidyLevel);
+                  const allStrategies = getAllMultiplexStrategies();
+                  const morphogenic = getMorphogenicOptions(selectedPlant.id);
+                  return (
+                    <>
+                      {ploidy && <PloidyPanel ploidy={ploidy} />}
+                      <EditingToolsPanel tools={allTools} recommendedIds={recommendedIds} />
+                      <MultiplexPanel
+                        recommended={multiplex}
+                        allStrategies={allStrategies}
+                        numTargets={editPlan.totalEdits}
+                        ploidyLevel={ploidyLevel}
+                      />
+                      <MorphogenicPanel regulators={morphogenic} genomeId={selectedPlant.id} />
+                    </>
+                  );
+                })()}
+              </div>
+            )}
+
+            {/* Orthologs tab */}
+            {activeTab === "orthologs" && editPlan && selectedPlant && (
+              <div className="animate-fade-in">
+                {(() => {
+                  const groups = editPlan.edits
+                    .map(e => getOrthologsForGene(e.gene.geneId))
+                    .filter((g): g is NonNullable<typeof g> => g !== undefined);
+                  const uniqueGroups = Array.from(new Map(groups.map(g => [g.groupId, g])).values());
+                  return (
+                    <OrthologPanel
+                      orthologGroups={uniqueGroups}
+                      highlightGenomeId={selectedPlant.id}
+                    />
+                  );
+                })()}
+              </div>
+            )}
+
+            {/* Literature tab */}
+            {activeTab === "literature" && (
+              <div className="animate-fade-in">
                 <LiteraturePanel
                   refs={analysis.literatureRefs}
                   geneNames={geneNameMap}

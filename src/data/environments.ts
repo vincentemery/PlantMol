@@ -315,6 +315,98 @@ export const traits: Trait[] = [
         guideRNASequence: "GATCCGTTAAGCTGATTCGA",
         pamSite: "AGG",
       },
+      // Coffee drought
+      {
+        geneId: "co-cadreb",
+        geneName: "CaDREB",
+        fullName: "Coffea arabica Dehydration-Responsive Element Binding",
+        genomeId: "coffee",
+        chromosome: "Chr 16",
+        position: 0.38,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress CaDREB under drought-inducible promoter for enhanced water-use efficiency in coffee plantations.",
+        mechanism:
+          "CaDREB activates LEA and dehydrin genes critical for cell survival during the 3-6 month dry season in coffee-growing regions. Coffee is a perennial crop — drought tolerance directly impacts multi-year productivity.",
+        confidence: "medium",
+        expectedOutcome:
+          "Maintained cherry yield during dry season. Reduced irrigation requirements by 30%. Critical for smallholder coffee farmers facing climate-driven drought.",
+        offTargetRisk: "low",
+        guideRNASequence: "CCGAATTCGACTGGAATCCA",
+        pamSite: "TGG",
+      },
+      // Soybean drought
+      {
+        geneId: "gm-gmdreb1",
+        geneName: "GmDREB1",
+        fullName: "Glycine max DREB1 Transcription Factor",
+        genomeId: "soybean",
+        chromosome: "Chr 3",
+        position: 0.32,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress GmDREB1 under stress-inducible promoter for enhanced drought tolerance in soybean.",
+        mechanism:
+          "GmDREB1 activates drought-responsive gene network. Soybean is the most water-sensitive major crop — drought during R1-R6 stages can reduce yield by 40%.",
+        confidence: "high",
+        expectedOutcome:
+          "20-30% yield maintenance under moderate drought. Improved pod retention during flowering-stage water deficit.",
+        offTargetRisk: "low",
+        guideRNASequence: "ATCGATCCGTAAGCTTGCCA",
+        pamSite: "AGG",
+      },
+      // Potato drought
+      {
+        geneId: "st-stdreb2",
+        geneName: "StDREB2",
+        fullName: "Solanum tuberosum DREB2",
+        genomeId: "potato",
+        chromosome: "Chr 7",
+        position: 0.4,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress StDREB2 for drought tolerance in potato — the most water-intensive major food crop per calorie.",
+        mechanism:
+          "StDREB2 activates protective gene network in tuber-forming tissues. Potato's shallow root system makes it extremely drought-susceptible.",
+        confidence: "medium",
+        expectedOutcome:
+          "Maintained tuber yield under 50% reduced irrigation. Critical for potato production in water-scarce regions.",
+        offTargetRisk: "low",
+        guideRNASequence: "GCTAACGGATCCGAATTCGA",
+        pamSite: "TGG",
+      },
+      // Cassava drought
+      {
+        geneId: "me-medreb2",
+        geneName: "MeDREB2A",
+        fullName: "Manihot esculenta DREB2A",
+        genomeId: "cassava",
+        chromosome: "Chr 5",
+        position: 0.4,
+        editType: "overexpression",
+        editDescription:
+          "Enhance the already drought-tolerant cassava's stress response for even harsher conditions in expanding Sahel production zones.",
+        mechanism:
+          "Cassava is naturally drought-tolerant via stomatal control and starch reserve mobilization. MeDREB2A overexpression enhances these existing mechanisms.",
+        confidence: "medium",
+        expectedOutcome:
+          "Extended drought survival from 4 to 6 months without rain. Critical for food security in sub-Saharan Africa's expanding dry zones.",
+        offTargetRisk: "low",
+        guideRNASequence: "GATCCGTTAAGCTGATTCGA",
+        pamSite: "CGG",
+      },
+      // ── New crop drought targets ──
+      { geneId: "hv-dreb1", geneName: "HvDREB1", fullName: "Hordeum vulgare Dehydration-Responsive Element Binding 1", genomeId: "barley", chromosome: "Chr 3H", position: 0.45, editType: "overexpression", editDescription: "Overexpress HvDREB1 to enhance drought tolerance in barley — already among the most drought-tolerant cereals.", mechanism: "HvDREB1 activates DRE/CRT-containing drought-responsive genes. Barley's natural drought tolerance makes this enhancement highly effective.", confidence: "high", expectedOutcome: "30-40% improved yield under drought stress. Barley's existing drought architecture provides strong baseline.", offTargetRisk: "low", guideRNASequence: "ATCGATCGAATTCCGGATCA", pamSite: "TGG" },
+      { geneId: "sb-dreb2", geneName: "SbDREB2", fullName: "Sorghum bicolor Dehydration-Responsive Element Binding 2", genomeId: "sorghum", chromosome: "Chr 1", position: 0.32, editType: "overexpression", editDescription: "Enhance sorghum's already exceptional drought tolerance for extreme arid conditions.", mechanism: "SbDREB2 activates drought-responsive genes. Sorghum is naturally the most drought-tolerant cereal due to C4 photosynthesis and waxy cuticle.", confidence: "high", expectedOutcome: "Survival extended from 30 to 45+ days without rain. Enhanced stay-green trait.", offTargetRisk: "low", guideRNASequence: "GCTAGCTTAACCGGATCGTA", pamSite: "AGG" },
+      { geneId: "sb-staygreen", geneName: "SbStay-Green", fullName: "Sorghum bicolor Stay-Green (SbSGR)", genomeId: "sorghum", chromosome: "Chr 3", position: 0.45, editType: "point-mutation", editDescription: "Introduce stay-green mutation to delay senescence during terminal drought.", mechanism: "Point mutation in SbSGR reduces chlorophyll degradation rate, maintaining photosynthetic capacity during grain fill under drought.", confidence: "high", expectedOutcome: "30-day delay in leaf senescence. 15-20% yield improvement under terminal drought.", offTargetRisk: "low", guideRNASequence: "TGCAATCGGATCCTTAAGCG", pamSite: "NGG" },
+      { geneId: "gh-dreb", geneName: "GhDREB", fullName: "Gossypium hirsutum DREB Transcription Factor", genomeId: "cotton", chromosome: "D05", position: 0.38, editType: "overexpression", editDescription: "Overexpress GhDREB for drought tolerance in rain-fed cotton production.", mechanism: "GhDREB activates dehydration-responsive genes. Cotton is moderately drought-sensitive — lint yield drops 50%+ under water deficit.", confidence: "medium", expectedOutcome: "20-30% yield protection under moderate drought. Critical for dryland cotton.", offTargetRisk: "low", guideRNASequence: "CCGAATTCGATCCGTTAAGC", pamSite: "TGG" },
+      { geneId: "ca2-dreb1", geneName: "CaDREB1", fullName: "Cicer arietinum DREB1 Transcription Factor", genomeId: "chickpea", chromosome: "Chr 1", position: 0.35, editType: "overexpression", editDescription: "Overexpress CaDREB1 for terminal drought tolerance — the #1 constraint on chickpea production.", mechanism: "CaDREB1 activates drought-responsive genes. Chickpea is typically grown on residual soil moisture with no irrigation.", confidence: "medium", expectedOutcome: "25-35% yield improvement under terminal drought. Critical for rainfed South Asian chickpea.", offTargetRisk: "low", guideRNASequence: "AGTCGATCGAATTCCGGATC", pamSite: "NGG" },
+      { geneId: "pg-dreb2", geneName: "PgDREB2", fullName: "Pennisetum glaucum DREB2 (Drought/Heat Responsive)", genomeId: "pearl-millet", chromosome: "Chr 1", position: 0.32, editType: "overexpression", editDescription: "Enhance pearl millet's extreme drought tolerance for the harshest Sahelian conditions.", mechanism: "PgDREB2 activates combined drought and heat responsive genes unique to pearl millet. This species thrives with <300mm annual rainfall.", confidence: "high", expectedOutcome: "Survival with <200mm annual rainfall. Pearl millet feeds 90 million people in the Sahel.", offTargetRisk: "low", guideRNASequence: "GCGATCAATTCGGATCCGTA", pamSite: "TGG" },
+      { geneId: "cq-dreb", geneName: "CqDREB", fullName: "Chenopodium quinoa DREB Transcription Factor", genomeId: "quinoa", chromosome: "Chr 2A", position: 0.7, editType: "overexpression", editDescription: "Enhance quinoa's drought response for lowland cultivation outside its Andean native range.", mechanism: "CqDREB activates osmolyte biosynthesis and stomatal regulation genes. Quinoa is naturally adapted to Altiplano drought.", confidence: "medium", expectedOutcome: "Improved performance in new dryland environments — enabling quinoa expansion beyond the Andes.", offTargetRisk: "low", guideRNASequence: "TCCGATCGAATTCGATCCGT", pamSite: "NGG" },
+      { geneId: "ib-dreb", geneName: "IbDREB", fullName: "Ipomoea batatas DREB Transcription Factor", genomeId: "sweet-potato", chromosome: "Chr 3", position: 0.72, editType: "overexpression", editDescription: "Overexpress IbDREB for drought tolerance in rainfed sweet potato production in sub-Saharan Africa.", mechanism: "IbDREB activates drought stress response genes in this hexaploid crop. Sweet potato is a key food security crop in drought-prone regions.", confidence: "medium", expectedOutcome: "Extended drought survival. Critical for food security in eastern and southern Africa.", offTargetRisk: "low", guideRNASequence: "ATCGGATCCGTTAAGCGATC", pamSite: "AGG" },
+      { geneId: "ah-dreb1", geneName: "AhDREB1", fullName: "Arachis hypogaea DREB1 Transcription Factor", genomeId: "peanut", chromosome: "A09", position: 0.72, editType: "overexpression", editDescription: "Overexpress AhDREB1 for drought tolerance in rainfed peanut.", mechanism: "AhDREB1 activates drought-responsive genes. Peanut is grown predominantly rainfed in semi-arid tropics.", confidence: "medium", expectedOutcome: "20-30% pod yield protection under drought. Important for smallholder farmers in India and West Africa.", offTargetRisk: "low", guideRNASequence: "GCTTAACCGGATCGATCGAA", pamSite: "NGG" },
+      { geneId: "bn-dreb", geneName: "BnDREB", fullName: "Brassica napus DREB Transcription Factor", genomeId: "canola", chromosome: "C08", position: 0.7, editType: "overexpression", editDescription: "Enhance canola drought tolerance for expanding dryland production in Australian and Canadian prairies.", mechanism: "BnDREB activates dehydration-responsive genes. Close relationship to Arabidopsis enables direct translation of DREB biology.", confidence: "medium", expectedOutcome: "15-25% seed yield protection under spring drought. Critical for dryland canola economics.", offTargetRisk: "low", guideRNASequence: "CCGATCGAATTCGGATCCGT", pamSite: "TGG" },
+      { geneId: "sc-dreb", geneName: "ScDREB", fullName: "Saccharum officinarum DREB Transcription Factor", genomeId: "sugarcane", chromosome: "Chr 5", position: 0.4, editType: "overexpression", editDescription: "Improve sugarcane drought tolerance for rain-fed production in expanding tropical dry zones.", mechanism: "ScDREB activates drought-responsive genes. Sugarcane is a heavy water user — drought reduces sucrose yield dramatically.", confidence: "medium", expectedOutcome: "15-25% sucrose yield protection under moderate drought. Multiple homeologs require multiplex editing.", offTargetRisk: "medium", guideRNASequence: "ATCGATCCGTTAAGCGATTC", pamSite: "NGG" },
     ],
   },
 
@@ -445,6 +537,53 @@ export const traits: Trait[] = [
         guideRNASequence: "AATCGGATCCTTAGGCCAAT",
         pamSite: "CGG",
       },
+      // Coffee cold
+      {
+        geneId: "co-cacbf",
+        geneName: "CaCBF",
+        fullName: "Coffea arabica C-repeat Binding Factor",
+        genomeId: "coffee",
+        chromosome: "Chr 8",
+        position: 0.4,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress CaCBF for frost tolerance in highland arabica production areas where occasional frosts destroy crops.",
+        mechanism:
+          "CaCBF activates cold-responsive genes. Brazilian coffee production is periodically devastated by frost events — the 1994 frost destroyed 1 billion coffee trees.",
+        confidence: "medium",
+        expectedOutcome:
+          "Survival of brief frost events (-2°C for 4h). Critical for Brazilian Cerrado and Colombian highland production.",
+        offTargetRisk: "low",
+        guideRNASequence: "TGCCAATCGGATCCTTAAGG",
+        pamSite: "AGG",
+      },
+      // Potato cold
+      {
+        geneId: "st-stcbf",
+        geneName: "StCBF1",
+        fullName: "Solanum tuberosum C-repeat Binding Factor 1",
+        genomeId: "potato",
+        chromosome: "Chr 4",
+        position: 0.38,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress StCBF1 for frost tolerance in high-altitude potato production in the Andes.",
+        mechanism:
+          "StCBF1 activates COR genes. Andean potato farming (4000m+) faces frequent frost damage. Wild relative S. acaule tolerates -8°C.",
+        confidence: "medium",
+        expectedOutcome:
+          "Improved frost survival at -4°C. Extended growing season in highland production zones.",
+        offTargetRisk: "low",
+        guideRNASequence: "CCGATTTCAAGGCTAACGTA",
+        pamSite: "CGG",
+      },
+      // ── New crop cold targets ──
+      { geneId: "hv-cbf14", geneName: "HvCBF14", fullName: "Hordeum vulgare C-repeat Binding Factor 14", genomeId: "barley", chromosome: "Chr 5H", position: 0.62, editType: "overexpression", editDescription: "Overexpress HvCBF14, the key frost tolerance gene in winter barley.", mechanism: "HvCBF14 is the most effective CBF paralog in barley — activates COR14b, DHN5, and other cold-responsive genes. Copy number variation at Fr-H2 locus controls natural frost tolerance.", confidence: "high", expectedOutcome: "Improved frost survival to -12°C. Critical for winter barley expansion into colder climates.", offTargetRisk: "low", guideRNASequence: "GCTAGCTTAACCGGATCGAA", pamSite: "NGG" },
+      { geneId: "hv-ice1", geneName: "HvICE1", fullName: "Hordeum vulgare Inducer of CBF Expression 1", genomeId: "barley", chromosome: "Chr 5H", position: 0.38, editType: "overexpression", editDescription: "Overexpress HvICE1, the upstream master regulator of the CBF cold acclimation cascade.", mechanism: "HvICE1 binds MYC elements in CBF promoters, activating the entire CBF regulon. Synergizes with HvCBF14 overexpression.", confidence: "medium", expectedOutcome: "Enhanced cold acclimation speed — full hardiness achieved in 3 days vs 7 days in wild type.", offTargetRisk: "low", guideRNASequence: "TCCGATCGAATTCGATCCGA", pamSite: "TGG" },
+      { geneId: "bn-cbf", geneName: "BnCBF", fullName: "Brassica napus C-repeat Binding Factor", genomeId: "canola", chromosome: "A03", position: 0.72, editType: "overexpression", editDescription: "Enhance winter hardiness in canola for northern Canadian and Scandinavian production.", mechanism: "BnCBF activates cold-responsive genes. Winter canola yields 20% more than spring canola but requires robust frost tolerance.", confidence: "high", expectedOutcome: "Improved winter survival rate from 70% to >90% in zone 3 climates.", offTargetRisk: "low", guideRNASequence: "ATCGGATCAATTCGGATCCG", pamSite: "NGG" },
+      { geneId: "cq-cbf", geneName: "CqCBF", fullName: "Chenopodium quinoa C-repeat Binding Factor", genomeId: "quinoa", chromosome: "Chr 5B", position: 0.72, editType: "overexpression", editDescription: "Enhance quinoa cold tolerance for high-altitude and northern latitude cultivation.", mechanism: "CqCBF activates cold-responsive genes. Quinoa naturally tolerates frost at 4000m+ in the Andes.", confidence: "medium", expectedOutcome: "Frost tolerance to -6°C. Enables quinoa cultivation in temperate continental climates.", offTargetRisk: "low", guideRNASequence: "GCCGATCGAATTCGATCCGT", pamSite: "AGG" },
+      { geneId: "ls-cbf", geneName: "LsCBF", fullName: "Lactuca sativa C-repeat Binding Factor", genomeId: "lettuce", chromosome: "Chr 4", position: 0.68, editType: "overexpression", editDescription: "Improve cold tolerance for extended-season lettuce production.", mechanism: "LsCBF activates cold-responsive genes enabling bolting resistance and frost survival for winter lettuce production.", confidence: "medium", expectedOutcome: "Survival at -3°C without bolting. Extended harvest season by 4-6 weeks.", offTargetRisk: "low", guideRNASequence: "GATCCGAATTCGATCGCCGA", pamSite: "NGG" },
+      { geneId: "cs-cbf1", geneName: "CsCBF1", fullName: "Camellia sinensis C-repeat Binding Factor 1", genomeId: "tea", chromosome: "Chr 1", position: 0.68, editType: "overexpression", editDescription: "Enhance cold hardiness in tea for northward expansion of cultivation.", mechanism: "CsCBF1 activates COR genes for frost protection. Tea is damaged below -5°C — northern production zones face winter kill risk.", confidence: "medium", expectedOutcome: "Improved winter survival in marginal tea production zones (Georgia, Turkey, northern Japan).", offTargetRisk: "low", guideRNASequence: "CCGAATTCGATCCGTTAAGC", pamSite: "TGG" },
     ],
   },
 
@@ -594,6 +733,75 @@ export const traits: Trait[] = [
         guideRNASequence: "CGATCCGAATTCAAGCTGAT",
         pamSite: "TGG",
       },
+      // Coffee salt
+      {
+        geneId: "co-casos1",
+        geneName: "CaSOS1",
+        fullName: "Coffea arabica Salt Overly Sensitive 1",
+        genomeId: "coffee",
+        chromosome: "Chr 16",
+        position: 0.65,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress CaSOS1 for salt tolerance in coffee grown in coastal/lowland areas with saline groundwater.",
+        mechanism:
+          "Na+ exclusion via plasma membrane antiporter. Coffee is extremely salt-sensitive — saline irrigation water causes leaf necrosis and yield loss.",
+        confidence: "medium",
+        expectedOutcome:
+          "Tolerance to irrigation water up to 50mM NaCl. Expanded growing regions to include coastal lowlands.",
+        offTargetRisk: "low",
+        guideRNASequence: "CGATCCGAATTCAAGCTGAT",
+        pamSite: "AGG",
+      },
+      // Soybean salt
+      {
+        geneId: "gm-gmnhx1",
+        geneName: "GmNHX1",
+        fullName: "Glycine max Vacuolar Na+/H+ Exchanger",
+        genomeId: "soybean",
+        chromosome: "Chr 20",
+        position: 0.38,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress GmNHX1 for vacuolar Na+ sequestration in soybean grown on salinized irrigated land.",
+        mechanism:
+          "Vacuolar Na+ compartmentalization protects cytoplasmic N-fixation symbiosis machinery — Bradyrhizobium nodules are extremely salt-sensitive.",
+        confidence: "high",
+        expectedOutcome:
+          "Maintained nodulation and N-fixation at 100mM NaCl. Protected symbiotic nitrogen fixation under salt stress.",
+        offTargetRisk: "low",
+        guideRNASequence: "TCGAAGTCCATGCTAACGGT",
+        pamSite: "TGG",
+      },
+      // Potato salt
+      {
+        geneId: "st-stnhx1",
+        geneName: "StNHX1",
+        fullName: "Solanum tuberosum Vacuolar Na+/H+ Antiporter",
+        genomeId: "potato",
+        chromosome: "Chr 11",
+        position: 0.35,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress StNHX1 for salt tolerance in potato production on increasingly salinized irrigated farmland.",
+        mechanism:
+          "Vacuolar Na+ sequestration in potato leaf and tuber cells. Potato is moderately salt-sensitive with yield decline above 2.5 dS/m.",
+        confidence: "medium",
+        expectedOutcome:
+          "Maintained tuber yield at up to 4 dS/m soil salinity. Important for irrigated production in arid zones.",
+        offTargetRisk: "low",
+        guideRNASequence: "GCTAACGGATCCGAATTCGA",
+        pamSite: "CGG",
+      },
+      // ── New crop salt targets ──
+      { geneId: "hv-hkt1-5", geneName: "HvHKT1;5", fullName: "Hordeum vulgare High-affinity K+ Transporter 1;5", genomeId: "barley", chromosome: "Chr 5H", position: 0.38, editType: "point-mutation", editDescription: "Engineer HvHKT1;5 for enhanced Na+ exclusion — barley is already the most salt-tolerant cereal.", mechanism: "HvHKT1;5 retrieves Na+ from the xylem, preventing shoot accumulation. Point mutations enhance Na+ selectivity over K+.", confidence: "high", expectedOutcome: "Salt tolerance to 250 mM NaCl (vs 150 mM in wild type). Barley's natural salt tolerance makes this highly effective.", offTargetRisk: "low", guideRNASequence: "GCTAGCTTAACCGGATCGTA", pamSite: "NGG" },
+      { geneId: "sb-sos1", geneName: "SbSOS1", fullName: "Sorghum bicolor Salt Overly Sensitive 1", genomeId: "sorghum", chromosome: "Chr 9", position: 0.55, editType: "overexpression", editDescription: "Overexpress SbSOS1 for Na+ exclusion in sorghum under saline irrigation.", mechanism: "SbSOS1 is a plasma membrane Na+/H+ antiporter exporting Na+ from root cells. Sorghum is moderately salt-tolerant.", confidence: "medium", expectedOutcome: "Improved growth at 100 mM NaCl. Critical for irrigated sorghum in semi-arid regions.", offTargetRisk: "low", guideRNASequence: "ATCGGATCCGTTAAGCGATT", pamSite: "TGG" },
+      { geneId: "cq-sos1", geneName: "CqSOS1", fullName: "Chenopodium quinoa Salt Overly Sensitive 1", genomeId: "quinoa", chromosome: "Chr 2A", position: 0.35, editType: "overexpression", editDescription: "Enhance quinoa's exceptional natural salt tolerance — quinoa grows at 40 dS/m soil salinity.", mechanism: "CqSOS1 drives Na+ exclusion. Quinoa is a true halophyte with salt bladder cells on leaf surfaces. Engineering enhances existing mechanisms.", confidence: "high", expectedOutcome: "Quinoa growth at seawater salinity levels. Enables coastal and salt-flat agriculture.", offTargetRisk: "low", guideRNASequence: "TCCGATCGAATTCGATCCGA", pamSite: "AGG" },
+      { geneId: "pg-hkt", geneName: "PgHKT", fullName: "Pennisetum glaucum High-affinity K+ Transporter", genomeId: "pearl-millet", chromosome: "Chr 3", position: 0.4, editType: "point-mutation", editDescription: "Engineer PgHKT for enhanced Na+ retrieval in pearl millet.", mechanism: "PgHKT controls Na+ loading/unloading in xylem. Pearl millet has moderate salt tolerance — enhancement needed for Sahelian saline soils.", confidence: "medium", expectedOutcome: "Maintained yield at 100 mM NaCl. Important for West African saline soils.", offTargetRisk: "low", guideRNASequence: "GCCGATCGAATTCGATCCGT", pamSite: "NGG" },
+      { geneId: "ma-nhx1", geneName: "MaNHX1", fullName: "Musa acuminata Vacuolar Na+/H+ Antiporter 1", genomeId: "banana", chromosome: "Chr 3", position: 0.72, editType: "overexpression", editDescription: "Overexpress MaNHX1 for salt tolerance in coastal banana production zones.", mechanism: "MaNHX1 sequesters Na+ in vacuoles, protecting cytoplasmic enzymes. Banana is salt-sensitive — yield declines above 1.5 dS/m.", confidence: "medium", expectedOutcome: "Maintained yield at 3 dS/m. Important for typhoon-prone coastal plantations with saltwater intrusion.", offTargetRisk: "low", guideRNASequence: "ATCGATCGAATTCCGGATCA", pamSite: "TGG" },
+      { geneId: "gh-sos1", geneName: "GhSOS1", fullName: "Gossypium hirsutum Salt Overly Sensitive 1", genomeId: "cotton", chromosome: "D05", position: 0.72, editType: "overexpression", editDescription: "Overexpress GhSOS1 for salt tolerance in irrigated cotton on salinized land.", mechanism: "GhSOS1 exports Na+ from root cells. Cotton is moderately salt-tolerant but yield declines significantly above 7 dS/m.", confidence: "medium", expectedOutcome: "Maintained lint yield at 10 dS/m. Critical for Central Asian and Australian irrigated cotton.", offTargetRisk: "low", guideRNASequence: "CCGAATTCGATCCGTTAAGC", pamSite: "NGG" },
+      { geneId: "bn-hkt1", geneName: "BnHKT1", fullName: "Brassica napus High-affinity K+ Transporter 1", genomeId: "canola", chromosome: "A03", position: 0.55, editType: "point-mutation", editDescription: "Engineer BnHKT1 for enhanced Na+ retrieval in canola on saline soils.", mechanism: "BnHKT1 retrieves Na+ from xylem, reducing shoot Na+ accumulation. Canola is moderately salt-sensitive.", confidence: "medium", expectedOutcome: "Improved seed yield at 100 mM NaCl. Important for dryland canola on salinized Australian soils.", offTargetRisk: "low", guideRNASequence: "GATCCGTTAAGCGATCGAAT", pamSite: "TGG" },
+      { geneId: "ib-nhx1", geneName: "IbNHX1", fullName: "Ipomoea batatas Vacuolar Na+/H+ Antiporter 1", genomeId: "sweet-potato", chromosome: "Chr 6", position: 0.68, editType: "overexpression", editDescription: "Overexpress IbNHX1 for salt tolerance in coastal sweet potato production.", mechanism: "IbNHX1 sequesters Na+ in vacuoles. Sweet potato is salt-sensitive but a critical food security crop in Pacific island and coastal communities.", confidence: "medium", expectedOutcome: "Maintained storage root yield at moderate salinity. Important for Pacific island food security.", offTargetRisk: "low", guideRNASequence: "TCCGGATCGATCGAATTCGA", pamSite: "AGG" },
     ],
   },
 
@@ -645,6 +853,11 @@ export const traits: Trait[] = [
         guideRNASequence: "AGTCCGATTCGAATCCGTTA",
         pamSite: "CGG",
       },
+      // ── New crop UV targets ──
+      { geneId: "hv-uvr8", geneName: "HvUVR8", fullName: "Hordeum vulgare UV RESISTANCE LOCUS 8", genomeId: "barley", chromosome: "Chr 7H", position: 0.7, editType: "overexpression", editDescription: "Overexpress HvUVR8 for UV-B protection in high-latitude barley exposed to ozone-depleted skies.", mechanism: "HvUVR8 is the UV-B photoreceptor triggering flavonoid sunscreen biosynthesis and DNA repair gene expression.", confidence: "medium", expectedOutcome: "Enhanced UV-B acclimation. Reduced DNA damage in high-latitude spring barley.", offTargetRisk: "low", guideRNASequence: "GCTAGCTTAACCGGATCGTA", pamSite: "NGG" },
+      { geneId: "cq-uvr8", geneName: "CqUVR8", fullName: "Chenopodium quinoa UV RESISTANCE LOCUS 8", genomeId: "quinoa", chromosome: "Chr 9A", position: 0.68, editType: "overexpression", editDescription: "Enhance quinoa's UV-B protection — quinoa naturally grows at 4000m+ with extreme UV flux.", mechanism: "CqUVR8 triggers UV-protective flavonoid accumulation. Quinoa's natural UV tolerance at altitude makes this enhancement additive.", confidence: "medium", expectedOutcome: "Enhanced UV protection for lowland and high-altitude cultivation. Reduced UV-induced yield loss.", offTargetRisk: "low", guideRNASequence: "TCCGATCGAATTCGATCCGA", pamSite: "TGG" },
+      { geneId: "cs-fls", geneName: "CsFLS", fullName: "Camellia sinensis Flavonol Synthase", genomeId: "tea", chromosome: "Chr 5", position: 0.38, editType: "overexpression", editDescription: "Overexpress CsFLS to boost catechin and flavonol production — UV stress increases tea quality.", mechanism: "CsFLS catalyzes flavonol biosynthesis. UV exposure enhances catechin production, improving tea flavor and antioxidant content.", confidence: "high", expectedOutcome: "2-3x increase in epigallocatechin gallate (EGCG). Higher-quality tea with enhanced health benefits.", offTargetRisk: "low", guideRNASequence: "ATCGGATCCGTTAAGCGATC", pamSite: "AGG" },
+      { geneId: "ls-myb12", geneName: "LsMYB12", fullName: "Lactuca sativa MYB12 Transcription Factor", genomeId: "lettuce", chromosome: "Chr 4", position: 0.4, editType: "overexpression", editDescription: "Overexpress LsMYB12 for UV protection and enhanced antioxidant content in lettuce.", mechanism: "LsMYB12 activates flavonol synthase and chalcone synthase genes. Increases both UV protection and nutritional value.", confidence: "medium", expectedOutcome: "Enhanced anthocyanin and flavonol content. Dual benefit: UV protection + nutritional enhancement.", offTargetRisk: "low", guideRNASequence: "GCCGATCGAATTCGATCCGT", pamSite: "NGG" },
     ],
   },
 
@@ -776,6 +989,56 @@ export const traits: Trait[] = [
         guideRNASequence: "GCTGATTCGAATCCGGATCC",
         pamSite: "CGG",
       },
+      // Coffee heat
+      {
+        geneId: "co-cahsp70",
+        geneName: "CaHSP70",
+        fullName: "Coffea arabica Heat Shock Protein 70",
+        genomeId: "coffee",
+        chromosome: "Chr 8",
+        position: 0.55,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress CaHSP70 to protect coffee from rising temperatures that threaten arabica production — arabica is extremely heat-sensitive.",
+        mechanism:
+          "CaHSP70 prevents protein aggregation during heat stress. Arabica coffee optimal range is 18-22°C — even 25°C sustained reduces quality. Climate models predict 50% of current arabica-suitable land will be lost by 2050.",
+        confidence: "medium",
+        expectedOutcome:
+          "Extended viable temperature range to 25-27°C. Critical for the survival of arabica coffee production as temperatures rise.",
+        offTargetRisk: "low",
+        guideRNASequence: "CCGGATCCGAATTCAAGGCT",
+        pamSite: "TGG",
+      },
+      // Soybean heat
+      {
+        geneId: "gm-gmhsp90",
+        geneName: "GmHSP90",
+        fullName: "Glycine max Heat Shock Protein 90",
+        genomeId: "soybean",
+        chromosome: "Chr 20",
+        position: 0.65,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress GmHSP90 for maintained pod set during heat waves that increasingly affect Midwest US and Brazilian soybean production.",
+        mechanism:
+          "GmHSP90 maintains protein homeostasis during heat. Heat-induced flower abortion is the primary cause of soybean yield loss at temperatures >35°C.",
+        confidence: "medium",
+        expectedOutcome:
+          "Maintained pod set at 38°C. Reduced yield loss during increasingly frequent summer heat waves.",
+        offTargetRisk: "low",
+        guideRNASequence: "CGAATTCGGATCCGTTAAGG",
+        pamSite: "AGG",
+      },
+      // ── New crop heat targets ──
+      { geneId: "sb-hsfa2", geneName: "SbHSFA2", fullName: "Sorghum bicolor Heat Shock Factor A2", genomeId: "sorghum", chromosome: "Chr 9", position: 0.4, editType: "overexpression", editDescription: "Overexpress SbHSFA2 for enhanced heat tolerance in sorghum — already among the most heat-tolerant cereals.", mechanism: "SbHSFA2 activates HSP70/HSP90/HSP101 chaperone network. Sorghum's C4 photosynthesis is heat-stable but grain fill is still sensitive to >38°C.", confidence: "high", expectedOutcome: "Maintained grain fill at 42°C. Sorghum's natural heat tolerance provides strong baseline.", offTargetRisk: "low", guideRNASequence: "GCTAGCTTAACCGGATCGTA", pamSite: "TGG" },
+      { geneId: "gh-hsp70", geneName: "GhHSP70", fullName: "Gossypium hirsutum Heat Shock Protein 70", genomeId: "cotton", chromosome: "A10", position: 0.68, editType: "overexpression", editDescription: "Overexpress GhHSP70 for heat tolerance — cotton boll shedding at >35°C is a major yield constraint.", mechanism: "GhHSP70 chaperone prevents protein aggregation during heat stress. Cotton is grown in hot climates but fiber development is sensitive.", confidence: "high", expectedOutcome: "Reduced boll shedding at 38°C. 15-25% lint yield improvement under heat stress.", offTargetRisk: "low", guideRNASequence: "TCCGATCGAATTCGATCCGA", pamSite: "NGG" },
+      { geneId: "pg-hsf", geneName: "PgHSF", fullName: "Pennisetum glaucum Heat Shock Factor", genomeId: "pearl-millet", chromosome: "Chr 1", position: 0.68, editType: "overexpression", editDescription: "Enhance pearl millet's extreme heat tolerance — pearl millet thrives at 42°C+ in the Sahel.", mechanism: "PgHSF activates the most heat-stable chaperone network among cereals. Pearl millet sets grain at temperatures lethal to other crops.", confidence: "high", expectedOutcome: "Maintained yield at 45°C. Critical for Sahel food security under climate change.", offTargetRisk: "low", guideRNASequence: "ATCGGATCCGTTAAGCGATC", pamSite: "AGG" },
+      { geneId: "ca2-hsp", geneName: "CaHSP", fullName: "Cicer arietinum Heat Shock Protein", genomeId: "chickpea", chromosome: "Chr 4", position: 0.42, editType: "overexpression", editDescription: "Overexpress CaHSP for heat tolerance — terminal heat is the #2 constraint after drought for chickpea.", mechanism: "CaHSP chaperones protect reproductive development. Chickpea flowers abort at >35°C, devastating yield.", confidence: "medium", expectedOutcome: "Maintained pod set at 38°C. Critical for South Asian chickpea production under warming.", offTargetRisk: "low", guideRNASequence: "GCCGATCGAATTCGATCCGT", pamSite: "NGG" },
+      { geneId: "ah-hsfa", geneName: "AhHSFA", fullName: "Arachis hypogaea Heat Shock Factor A", genomeId: "peanut", chromosome: "B06", position: 0.5, editType: "overexpression", editDescription: "Overexpress AhHSFA for heat tolerance in peanut — heat stress reduces aflatoxin resistance.", mechanism: "AhHSFA activates chaperone network. Heat-stressed peanut is more susceptible to Aspergillus invasion and aflatoxin contamination.", confidence: "medium", expectedOutcome: "Maintained pod yield and reduced aflatoxin susceptibility at 38°C.", offTargetRisk: "low", guideRNASequence: "CCGAATTCGATCCGTTAAGC", pamSite: "TGG" },
+      { geneId: "sc-hsp101", geneName: "ScHSP101", fullName: "Saccharum officinarum Heat Shock Protein 101", genomeId: "sugarcane", chromosome: "Chr 5", position: 0.75, editType: "overexpression", editDescription: "Overexpress ScHSP101 for enhanced heat tolerance in tropical sugarcane under warming.", mechanism: "ScHSP101 is a AAA+ ATPase chaperone that resolves protein aggregates. Sugarcane photosynthesis declines above 38°C.", confidence: "medium", expectedOutcome: "Maintained photosynthetic rate at 40°C. Important for tropical sugarcane under climate change.", offTargetRisk: "medium", guideRNASequence: "GATCCGTTAAGCGATCGAAT", pamSite: "NGG" },
+      { geneId: "ma-hsp70", geneName: "MaHSP70", fullName: "Musa acuminata Heat Shock Protein 70", genomeId: "banana", chromosome: "Chr 8", position: 0.42, editType: "overexpression", editDescription: "Overexpress MaHSP70 for heat tolerance in banana — Cavendish fruit quality declines above 34°C.", mechanism: "MaHSP70 protects cellular proteins from heat-induced aggregation. Banana fruit development is temperature-sensitive.", confidence: "medium", expectedOutcome: "Maintained fruit quality at 36°C. Important for lowland tropical banana production under warming.", offTargetRisk: "low", guideRNASequence: "TCCGGATCGATCGAATTCGA", pamSite: "AGG" },
+      { geneId: "tc-hsp", geneName: "TcHSP", fullName: "Theobroma cacao Heat Shock Protein", genomeId: "cacao", chromosome: "Chr 6", position: 0.68, editType: "overexpression", editDescription: "Overexpress TcHSP — cacao is extremely heat-sensitive and production zones are contracting.", mechanism: "TcHSP protects photosynthesis and flower development. Cacao thrives at 21-23°C — yield crashes above 28°C.", confidence: "medium", expectedOutcome: "Extended upper temperature limit by 2-3°C. Critical for West African cacao under climate change.", offTargetRisk: "low", guideRNASequence: "ATCGATCGAATTCCGGATCA", pamSite: "NGG" },
+      { geneId: "eg-hsp", geneName: "EgHSP", fullName: "Elaeis guineensis Heat Shock Protein", genomeId: "oil-palm", chromosome: "Chr 5", position: 0.4, editType: "overexpression", editDescription: "Overexpress EgHSP for heat tolerance in oil palm under tropical warming.", mechanism: "EgHSP protects pollen viability and fruit set. Oil palm yield declines with increasing temperature trends.", confidence: "medium", expectedOutcome: "Maintained pollen viability at 38°C. 25-year plantation lifespan makes climate adaptation critical.", offTargetRisk: "low", guideRNASequence: "GCCGATCGAATTCGATCCGT", pamSite: "TGG" },
     ],
   },
 
@@ -867,6 +1130,35 @@ export const traits: Trait[] = [
         guideRNASequence: "GCTAACGGTCGAATCCGATC",
         pamSite: "TGG",
       },
+      // Soybean nutrient efficiency
+      {
+        geneId: "gm-gmnark",
+        geneName: "GmNARK",
+        fullName: "Glycine max Nodule Autoregulation Receptor Kinase",
+        genomeId: "soybean",
+        chromosome: "Chr 3",
+        position: 0.7,
+        editType: "point-mutation",
+        editDescription:
+          "Modify GmNARK to relax autoregulation of nodulation, allowing more root nodules and enhanced biological nitrogen fixation.",
+        mechanism:
+          "GmNARK negatively regulates nodule number through systemic shoot-root signaling. Partial loss-of-function allows 2-3x more nodules, increasing biological N-fixation from the Bradyrhizobium symbiosis.",
+        confidence: "experimental",
+        expectedOutcome:
+          "50-100% increase in biological nitrogen fixation. Reduced dependence on synthetic N fertilizer for soybean production.",
+        offTargetRisk: "medium",
+        guideRNASequence: "TCCGAATCGATGCTAACGGA",
+        pamSite: "TGG",
+      },
+      // ── New crop nutrient targets ──
+      { geneId: "hv-pht1", geneName: "HvPHT1", fullName: "Hordeum vulgare Phosphate Transporter 1", genomeId: "barley", chromosome: "Chr 1H", position: 0.65, editType: "overexpression", editDescription: "Overexpress HvPHT1 for enhanced phosphorus uptake in barley on P-deficient soils.", mechanism: "HvPHT1 is a high-affinity phosphate transporter in root epidermal cells. Enhanced expression increases P foraging capacity.", confidence: "high", expectedOutcome: "30-50% increase in P uptake from low-P soils. Reduced fertilizer dependence.", offTargetRisk: "low", guideRNASequence: "GCTAGCTTAACCGGATCGTA", pamSite: "NGG" },
+      { geneId: "sb-pstol1", geneName: "SbPSTOL1", fullName: "Sorghum bicolor Phosphorus Starvation Tolerance 1", genomeId: "sorghum", chromosome: "Chr 3", position: 0.6, editType: "overexpression", editDescription: "Overexpress SbPSTOL1 — the PSTOL1 kinase enhances root growth for P foraging.", mechanism: "SbPSTOL1 is a protein kinase that enhances root surface area under P starvation. Originally discovered in rice aus variety Kasalath.", confidence: "high", expectedOutcome: "40-60% more root biomass under P deficiency. 20-30% higher grain yield on low-P soils.", offTargetRisk: "low", guideRNASequence: "TCCGATCGAATTCGATCCGA", pamSite: "TGG" },
+      { geneId: "pg-pstol", geneName: "PgPSTOL", fullName: "Pennisetum glaucum Phosphorus Starvation Tolerance", genomeId: "pearl-millet", chromosome: "Chr 5", position: 0.45, editType: "overexpression", editDescription: "Enhance P acquisition in pearl millet on nutrient-depleted Sahelian soils.", mechanism: "PgPSTOL enhances root architecture for P foraging in the extremely P-deficient sandy soils of the Sahel.", confidence: "medium", expectedOutcome: "Improved root exploration of P-poor soils. 20-30% yield improvement without fertilizer.", offTargetRisk: "low", guideRNASequence: "ATCGGATCCGTTAAGCGATC", pamSite: "AGG" },
+      { geneId: "bn-pht1", geneName: "BnPHT1", fullName: "Brassica napus Phosphate Transporter 1", genomeId: "canola", chromosome: "A08", position: 0.5, editType: "overexpression", editDescription: "Overexpress BnPHT1 for improved canola production on low-P soils.", mechanism: "BnPHT1 increases high-affinity P uptake. Canola is a heavy P user — seed P demand for oil synthesis is high.", confidence: "medium", expectedOutcome: "15-25% seed yield improvement on P-deficient soils.", offTargetRisk: "low", guideRNASequence: "GCCGATCGAATTCGATCCGT", pamSite: "NGG" },
+      { geneId: "cs-amt", geneName: "CsAMT", fullName: "Camellia sinensis Ammonium Transporter", genomeId: "tea", chromosome: "Chr 9", position: 0.7, editType: "overexpression", editDescription: "Overexpress CsAMT for enhanced N acquisition — tea preferentially absorbs NH4+ for theanine biosynthesis.", mechanism: "CsAMT is a high-affinity ammonium transporter. Tea uniquely prefers NH4+ over NO3-, which is channeled into theanine (the amino acid defining tea flavor).", confidence: "medium", expectedOutcome: "Enhanced theanine production via improved NH4+ uptake. Better tea quality and nitrogen use efficiency.", offTargetRisk: "low", guideRNASequence: "CCGAATTCGATCCGTTAAGC", pamSite: "TGG" },
+      { geneId: "tc-pht", geneName: "TcPHT", fullName: "Theobroma cacao Phosphate Transporter", genomeId: "cacao", chromosome: "Chr 9", position: 0.45, editType: "overexpression", editDescription: "Overexpress TcPHT for P uptake in cacao on weathered tropical soils.", mechanism: "TcPHT enhances P acquisition from P-locked oxisol soils where cacao is predominantly grown.", confidence: "medium", expectedOutcome: "Improved cacao tree vigor and pod production on low-fertility soils.", offTargetRisk: "low", guideRNASequence: "GATCCGTTAAGCGATCGAAT", pamSite: "NGG" },
+      { geneId: "eg-pht", geneName: "EgPHT", fullName: "Elaeis guineensis Phosphate Transporter", genomeId: "oil-palm", chromosome: "Chr 10", position: 0.45, editType: "overexpression", editDescription: "Overexpress EgPHT for nutrient efficiency in oil palm on tropical soils.", mechanism: "EgPHT enhances P acquisition. Oil palm plantations on peat and mineral soils often face P limitation.", confidence: "medium", expectedOutcome: "Reduced fertilizer input costs over 25-year palm lifespan.", offTargetRisk: "low", guideRNASequence: "TCCGGATCGATCGAATTCGA", pamSite: "AGG" },
+      { geneId: "ls-nrt", geneName: "LsNRT", fullName: "Lactuca sativa Nitrate Transporter", genomeId: "lettuce", chromosome: "Chr 7", position: 0.72, editType: "overexpression", editDescription: "Overexpress LsNRT for improved nitrogen use efficiency in lettuce.", mechanism: "LsNRT enhances nitrate uptake and assimilation. Lettuce is a heavy N user — reducing fertilizer needs benefits both economics and environment.", confidence: "medium", expectedOutcome: "Same yield with 30% less N fertilizer. Reduced nitrate runoff from lettuce fields.", offTargetRisk: "low", guideRNASequence: "ATCGATCGAATTCCGGATCA", pamSite: "NGG" },
     ],
   },
 
@@ -999,6 +1291,100 @@ export const traits: Trait[] = [
         guideRNASequence: "CGAATCCGTTAAGCTGATCC",
         pamSite: "CGG",
       },
+      // Coffee disease
+      {
+        geneId: "co-canpr1",
+        geneName: "CaNPR1",
+        fullName: "Coffea arabica NPR1",
+        genomeId: "coffee",
+        chromosome: "Chr 8",
+        position: 0.7,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress CaNPR1 for broad-spectrum resistance against coffee leaf rust (Hemileia vastatrix) — the most devastating coffee disease.",
+        mechanism:
+          "CaNPR1 primes SA-mediated defense. Coffee leaf rust has devastated plantations worldwide — the 2012 Central American outbreak destroyed 50% of production.",
+        confidence: "medium",
+        expectedOutcome:
+          "Reduced coffee leaf rust severity by 50-70%. Complements existing SH-gene resistance. Critical for arabica which has narrow genetic base for disease resistance.",
+        offTargetRisk: "low",
+        guideRNASequence: "AACGGATCCGAATTCAAGCT",
+        pamSite: "CGG",
+      },
+      // Potato disease
+      {
+        geneId: "st-str1",
+        geneName: "StR1/Rpi-blb1",
+        fullName: "Solanum tuberosum Late Blight Resistance Gene",
+        genomeId: "potato",
+        chromosome: "Chr 9",
+        position: 0.45,
+        editType: "insertion",
+        editDescription:
+          "Introduce Rpi-blb1 from wild relative S. bulbocastanum for durable late blight resistance — the disease that caused the Irish Famine.",
+        mechanism:
+          "Rpi-blb1 encodes a CC-NBS-LRR protein recognizing Phytophthora infestans effector IpiO. Provides race-non-specific resistance unlike the rapidly-overcome R1-R11 genes.",
+        confidence: "high",
+        expectedOutcome:
+          "Near-complete late blight resistance. Eliminates need for 10-15 fungicide sprays per season. Already demonstrated in Wageningen 'DuRPh' potatoes.",
+        offTargetRisk: "low",
+        guideRNASequence: "GATCCGAATTCGAATCCGTT",
+        pamSite: "TGG",
+      },
+      // Cassava disease
+      {
+        geneId: "me-mecmd2",
+        geneName: "MeCMD2",
+        fullName: "Manihot esculenta Cassava Mosaic Disease Resistance 2",
+        genomeId: "cassava",
+        chromosome: "Chr 16",
+        position: 0.5,
+        editType: "overexpression",
+        editDescription:
+          "Enhance CMD2-mediated resistance against cassava mosaic disease — the most yield-limiting disease in Africa.",
+        mechanism:
+          "CMD2 confers dominant resistance to cassava mosaic geminiviruses. Cassava mosaic disease causes 20-80% yield loss in sub-Saharan Africa.",
+        confidence: "high",
+        expectedOutcome:
+          "Strong resistance to all cassava mosaic virus strains. Critical for the 500+ million people dependent on cassava in Africa.",
+        offTargetRisk: "low",
+        guideRNASequence: "CGAATCCGTTAAGCTGATCC",
+        pamSite: "AGG",
+      },
+      // Soybean disease
+      {
+        geneId: "gm-gmnpr1",
+        geneName: "GmNPR1",
+        fullName: "Glycine max NPR1",
+        genomeId: "soybean",
+        chromosome: "Chr 10",
+        position: 0.68,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress GmNPR1 for broad-spectrum resistance against soybean rust (Phakopsora pachyrhizi) and Phytophthora root rot.",
+        mechanism:
+          "GmNPR1 enhances SA-mediated defense in soybean. Asian soybean rust has devastated production in South America since 2001.",
+        confidence: "medium",
+        expectedOutcome:
+          "Reduced soybean rust severity. Lower fungicide costs for Brazilian/Argentinian producers.",
+        offTargetRisk: "low",
+        guideRNASequence: "CGAATCCGTTAAGCTGATCC",
+        pamSite: "TGG",
+      },
+      // ── New crop disease targets ──
+      { geneId: "hv-mla", geneName: "HvMLA", fullName: "Hordeum vulgare Mildew Locus A", genomeId: "barley", chromosome: "Chr 2H", position: 0.72, editType: "point-mutation", editDescription: "Engineer HvMLA allele specificity for broad-spectrum powdery mildew resistance.", mechanism: "HvMLA is an NLR immune receptor — single amino acid changes in the LRR domain switch pathogen race recognition. The MLA locus contains multiple allelic specificities.", confidence: "high", expectedOutcome: "Broad-spectrum resistance to multiple Blumeria graminis f.sp. hordei races.", offTargetRisk: "low", guideRNASequence: "GCTAGCTTAACCGGATCGTA", pamSite: "NGG" },
+      { geneId: "sb-npr1", geneName: "SbNPR1", fullName: "Sorghum bicolor Non-expressor of PR genes 1", genomeId: "sorghum", chromosome: "Chr 9", position: 0.75, editType: "overexpression", editDescription: "Overexpress SbNPR1 for broad-spectrum disease resistance in sorghum.", mechanism: "SbNPR1 is the master regulator of salicylic acid-mediated systemic acquired resistance (SAR).", confidence: "medium", expectedOutcome: "Enhanced resistance to anthracnose, grain mold, and downy mildew.", offTargetRisk: "low", guideRNASequence: "TCCGATCGAATTCGATCCGA", pamSite: "TGG" },
+      { geneId: "ma-rga2", geneName: "MaRGA2", fullName: "Musa acuminata Resistance Gene Analog 2", genomeId: "banana", chromosome: "Chr 3", position: 0.38, editType: "overexpression", editDescription: "Overexpress MaRGA2 for Fusarium wilt TR4 resistance — the existential threat to banana production.", mechanism: "MaRGA2 from wild banana M. acuminata ssp. malaccensis recognizes Fusarium oxysporum f.sp. cubense TR4 effectors. Dale et al. showed 67% of transgenic lines resist TR4 in field trials.", confidence: "high", expectedOutcome: "Resistance to Fusarium wilt TR4 — saving the Cavendish banana from the pathogen that destroyed Gros Michel.", offTargetRisk: "low", guideRNASequence: "ATCGGATCCGTTAAGCGATC", pamSite: "AGG" },
+      { geneId: "bn-rlm", geneName: "BnRLM", fullName: "Brassica napus Resistance to Leptosphaeria maculans", genomeId: "canola", chromosome: "C03", position: 0.78, editType: "point-mutation", editDescription: "Engineer BnRLM for durable blackleg resistance in canola.", mechanism: "BnRLM is an R-gene conferring race-specific resistance to blackleg (L. maculans). Point mutations in LRR domain can broaden recognition.", confidence: "high", expectedOutcome: "Durable blackleg resistance across multiple L. maculans races.", offTargetRisk: "low", guideRNASequence: "GCCGATCGAATTCGATCCGT", pamSite: "NGG" },
+      { geneId: "ca2-rr", geneName: "CaRR", fullName: "Cicer arietinum Resistance Regulator", genomeId: "chickpea", chromosome: "Chr 1", position: 0.72, editType: "overexpression", editDescription: "Overexpress CaRR for ascochyta blight resistance — the #1 disease of chickpea globally.", mechanism: "CaRR activates defense-related genes against Ascochyta rabiei. Ascochyta blight can cause 100% yield loss in wet conditions.", confidence: "medium", expectedOutcome: "60-80% reduction in ascochyta blight severity. Critical for Mediterranean and South Asian chickpea.", offTargetRisk: "low", guideRNASequence: "CCGAATTCGATCCGTTAAGC", pamSite: "TGG" },
+      { geneId: "tc-npr1", geneName: "TcNPR1", fullName: "Theobroma cacao Non-expressor of PR genes 1", genomeId: "cacao", chromosome: "Chr 4", position: 0.72, editType: "overexpression", editDescription: "Overexpress TcNPR1 for broad-spectrum disease resistance — frosty pod, black pod, and witches' broom devastate cacao.", mechanism: "TcNPR1 primes SA-mediated defense. Cacao loses 30-40% of global production to Moniliophthora (frosty pod), Phytophthora (black pod), and witches' broom.", confidence: "high", expectedOutcome: "30-50% reduction in pod loss from combined disease pressure. Transformative for West African cacao farmers.", offTargetRisk: "low", guideRNASequence: "GATCCGTTAAGCGATCGAAT", pamSite: "NGG" },
+      { geneId: "gh-npr1", geneName: "GhNPR1", fullName: "Gossypium hirsutum Non-expressor of PR genes 1", genomeId: "cotton", chromosome: "D09", position: 0.55, editType: "overexpression", editDescription: "Overexpress GhNPR1 for broad-spectrum disease resistance in cotton.", mechanism: "GhNPR1 activates systemic acquired resistance. Cotton faces Verticillium wilt, Fusarium wilt, and bacterial blight.", confidence: "medium", expectedOutcome: "Enhanced resistance to multiple pathogens without yield penalty.", offTargetRisk: "low", guideRNASequence: "TCCGGATCGATCGAATTCGA", pamSite: "AGG" },
+      { geneId: "ls-dmr6", geneName: "LsDMR6", fullName: "Lactuca sativa Downy Mildew Resistance 6", genomeId: "lettuce", chromosome: "Chr 1", position: 0.35, editType: "knockout", editDescription: "Knockout LsDMR6 for downy mildew resistance — one of the first CRISPR crops to receive USDA regulatory exemption.", mechanism: "DMR6 is a negative regulator of defense — it hydroxylates SA, reducing defense signaling. Knockout increases SA levels, conferring broad-spectrum resistance.", confidence: "high", expectedOutcome: "Near-complete resistance to Bremia lactucae (downy mildew). USDA non-regulated status already granted.", offTargetRisk: "low", guideRNASequence: "ATCGATCGAATTCCGGATCA", pamSite: "NGG" },
+      { geneId: "cs-npr1", geneName: "CsNPR1", fullName: "Camellia sinensis Non-expressor of PR genes 1", genomeId: "tea", chromosome: "Chr 5", position: 0.75, editType: "overexpression", editDescription: "Overexpress CsNPR1 for disease resistance in tea — blister blight and grey blight cause major losses.", mechanism: "CsNPR1 activates systemic acquired resistance in this woody perennial.", confidence: "medium", expectedOutcome: "Reduced fungicide application in tea production. Better for both farmer health and tea quality.", offTargetRisk: "low", guideRNASequence: "GCCGATCGAATTCGATCCGT", pamSite: "TGG" },
+      { geneId: "eg-npr1", geneName: "EgNPR1", fullName: "Elaeis guineensis Non-expressor of PR genes 1", genomeId: "oil-palm", chromosome: "Chr 5", position: 0.7, editType: "overexpression", editDescription: "Overexpress EgNPR1 for Ganoderma basal stem rot resistance — the #1 disease of oil palm.", mechanism: "EgNPR1 activates defense against Ganoderma boninense, which kills 50-80% of palms in Southeast Asian plantations by age 15.", confidence: "medium", expectedOutcome: "Extended productive palm lifespan from 15 to 25 years. Massive economic impact given 4-5 year replanting delay.", offTargetRisk: "low", guideRNASequence: "CCGAATTCGATCCGTTAAGC", pamSite: "NGG" },
+      { geneId: "ah-rrs5", geneName: "AhRRS5", fullName: "Arachis hypogaea Rust Resistance 5", genomeId: "peanut", chromosome: "A03", position: 0.45, editType: "overexpression", editDescription: "Overexpress AhRRS5 for rust and late leaf spot resistance in peanut.", mechanism: "AhRRS5 is an NBS-LRR gene from wild Arachis progenitors conferring resistance to Puccinia arachidis (rust).", confidence: "medium", expectedOutcome: "70-90% reduction in peanut rust severity. Reduced fungicide use.", offTargetRisk: "low", guideRNASequence: "GATCCGTTAAGCGATCGAAT", pamSite: "AGG" },
+      { geneId: "ib-rr", geneName: "IbRR", fullName: "Ipomoea batatas Resistance Regulator", genomeId: "sweet-potato", chromosome: "Chr 10", position: 0.75, editType: "overexpression", editDescription: "Overexpress IbRR for sweet potato virus disease (SPVD) resistance.", mechanism: "IbRR enhances resistance to the devastating SPVD complex (co-infection of SPCSV + SPFMV). SPVD causes near-total yield loss.", confidence: "medium", expectedOutcome: "Reduced SPVD severity. Critical for sub-Saharan African food security.", offTargetRisk: "low", guideRNASequence: "TCCGATCGAATTCGATCCGA", pamSite: "NGG" },
+      { geneId: "cq-rr", geneName: "CqRR", fullName: "Chenopodium quinoa Resistance Regulator", genomeId: "quinoa", chromosome: "Chr 14B", position: 0.78, editType: "overexpression", editDescription: "Overexpress CqRR for downy mildew resistance — the main disease of quinoa.", mechanism: "CqRR enhances defense against Peronospora variabilis, which can cause 30-50% yield loss.", confidence: "experimental", expectedOutcome: "Improved downy mildew resistance as quinoa expands to new humid environments.", offTargetRisk: "low", guideRNASequence: "ATCGGATCCGTTAAGCGATC", pamSite: "TGG" },
     ],
   },
 
@@ -1130,6 +1516,57 @@ export const traits: Trait[] = [
         guideRNASequence: "GATTCGAATCCGGATCCGTT",
         pamSite: "TGG",
       },
+      // Potato nutrition
+      {
+        geneId: "st-stpsy1",
+        geneName: "StPSY1",
+        fullName: "Solanum tuberosum Phytoene Synthase 1",
+        genomeId: "potato",
+        chromosome: "Chr 1",
+        position: 0.3,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress StPSY1 for β-carotene biofortification in potato flesh — 'Orange-fleshed' potato for vitamin A.",
+        mechanism:
+          "PSY overexpression in potato tubers produces β-carotene in normally white flesh. Analogous to Golden Rice but in potato — a staple for 1.3 billion people.",
+        confidence: "high",
+        expectedOutcome:
+          "Orange-fleshed potato with 5-10x higher β-carotene. Addresses vitamin A deficiency in potato-dependent populations in Andes, Africa, and South Asia.",
+        offTargetRisk: "low",
+        guideRNASequence: "TCGATCCGAATTCAAGGCTA",
+        pamSite: "AGG",
+      },
+      // Cassava nutrition
+      {
+        geneId: "me-mepsy",
+        geneName: "MePSY2",
+        fullName: "Manihot esculenta Phytoene Synthase 2",
+        genomeId: "cassava",
+        chromosome: "Chr 5",
+        position: 0.72,
+        editType: "overexpression",
+        editDescription:
+          "Overexpress MePSY2 for provitamin A biofortification in cassava roots — BioCassava Plus strategy.",
+        mechanism:
+          "MePSY2 drives carotenoid accumulation in cassava storage roots. Yellow-fleshed cassava varieties have naturally higher PSY expression. Engineering amplifies this trait.",
+        confidence: "high",
+        expectedOutcome:
+          "8-10 μg/g β-carotene in cassava roots (vs <1 μg/g in white varieties). Addresses vitamin A deficiency for 250M+ cassava-dependent people in Africa.",
+        offTargetRisk: "low",
+        guideRNASequence: "GATTCGAATCCGGATCCGTT",
+        pamSite: "CGG",
+      },
+      // ── New crop nutrition targets ──
+      { geneId: "ib-or", geneName: "IbOr", fullName: "Ipomoea batatas Orange (Or) Gene", genomeId: "sweet-potato", chromosome: "Chr 3", position: 0.4, editType: "overexpression", editDescription: "Overexpress IbOr for beta-carotene biofortification — the Orange gene is THE biofortification success story.", mechanism: "IbOr encodes a DnaJ-like chaperone that triggers chromoplast differentiation, creating carotenoid-sequestering sink organelles. This is the basis of orange-fleshed sweet potato (OFSP) feeding millions.", confidence: "high", expectedOutcome: "300% RDA vitamin A per serving. OFSP already reduces vitamin A deficiency in 10+ African countries.", offTargetRisk: "low", guideRNASequence: "GCTAGCTTAACCGGATCGTA", pamSite: "NGG" },
+      { geneId: "ma-psy", geneName: "MaPSY", fullName: "Musa acuminata Phytoene Synthase 2", genomeId: "banana", chromosome: "Chr 5", position: 0.35, editType: "overexpression", editDescription: "Overexpress MaPSY2 for provitamin A banana — addressing vitamin A deficiency in East Africa.", mechanism: "MaPSY catalyzes the first committed step of carotenoid biosynthesis (GGPP → phytoene). Paul et al. showed 4-6x increase in fruit β-carotene.", confidence: "high", expectedOutcome: "4-6x increase in fruit β-carotene. Golden banana for vitamin A biofortification in Uganda and surrounding countries.", offTargetRisk: "low", guideRNASequence: "TCCGATCGAATTCGATCCGA", pamSite: "TGG" },
+      { geneId: "sb-psy1", geneName: "SbPSY1", fullName: "Sorghum bicolor Phytoene Synthase 1", genomeId: "sorghum", chromosome: "Chr 1", position: 0.68, editType: "overexpression", editDescription: "Overexpress SbPSY1 for provitamin A sorghum — addressing micronutrient deficiency in Africa.", mechanism: "SbPSY1 drives carotenoid biosynthesis in sorghum grain. Yellow endosperm varieties have higher natural PSY expression.", confidence: "medium", expectedOutcome: "10-20 μg/g β-carotene in sorghum grain. Biofortified sorghum for the Sahel.", offTargetRisk: "low", guideRNASequence: "ATCGGATCCGTTAAGCGATC", pamSite: "AGG" },
+      { geneId: "pg-fer", geneName: "PgFER", fullName: "Pennisetum glaucum Ferritin", genomeId: "pearl-millet", chromosome: "Chr 3", position: 0.75, editType: "overexpression", editDescription: "Overexpress PgFER for iron biofortification in pearl millet.", mechanism: "PgFER stores iron in a bioavailable form. Pearl millet is already the most iron-dense cereal — enhancement targets 80+ mg/kg Fe.", confidence: "medium", expectedOutcome: "Iron-biofortified pearl millet with 80+ mg/kg Fe. HarvestPlus target level for reducing iron deficiency anemia.", offTargetRisk: "low", guideRNASequence: "GCCGATCGAATTCGATCCGT", pamSite: "NGG" },
+      { geneId: "hv-nas2", geneName: "HvNAS2", fullName: "Hordeum vulgare Nicotianamine Synthase 2", genomeId: "barley", chromosome: "Chr 3H", position: 0.78, editType: "overexpression", editDescription: "Overexpress HvNAS2 for zinc biofortification in barley grain.", mechanism: "HvNAS2 synthesizes nicotianamine, which chelates zinc for phloem loading into grain. Ramesh et al. showed 2-3x Zn increase.", confidence: "medium", expectedOutcome: "2-3x increase in grain Zn content. Zinc-biofortified barley for combating zinc deficiency.", offTargetRisk: "low", guideRNASequence: "CCGAATTCGATCCGTTAAGC", pamSite: "TGG" },
+      { geneId: "ah-fad2", geneName: "AhFAD2", fullName: "Arachis hypogaea Fatty Acid Desaturase 2", genomeId: "peanut", chromosome: "A09", position: 0.38, editType: "point-mutation", editDescription: "Knockout AhFAD2 for high oleic peanut — healthier oil with extended shelf life.", mechanism: "AhFAD2 converts oleic (18:1) to linoleic acid (18:2). Knockout in both A and B homeologs increases oleic from 50% to >80%.", confidence: "high", expectedOutcome: "High oleic peanut (>80% oleic acid). Healthier oil profile, 10x extended shelf life, better frying stability.", offTargetRisk: "low", guideRNASequence: "GATCCGTTAAGCGATCGAAT", pamSite: "NGG" },
+      { geneId: "bn-fad2", geneName: "BnFAD2", fullName: "Brassica napus Fatty Acid Desaturase 2", genomeId: "canola", chromosome: "A03", position: 0.4, editType: "point-mutation", editDescription: "Knockout BnFAD2 for high oleic canola — the most important canola quality trait.", mechanism: "BnFAD2 knockout blocks oleic→linoleic conversion. Both A and C homeologs must be edited. High oleic canola is already commercial.", confidence: "high", expectedOutcome: "Oleic acid >75% (vs 60% in standard canola). Premium commodity pricing for high oleic oil.", offTargetRisk: "low", guideRNASequence: "TCCGGATCGATCGAATTCGA", pamSite: "AGG" },
+      { geneId: "eg-fatb", geneName: "EgFATB", fullName: "Elaeis guineensis Fatty Acid Thioesterase B", genomeId: "oil-palm", chromosome: "Chr 2", position: 0.72, editType: "knockout", editDescription: "Knockout EgFATB to reduce palmitic acid — making palm oil healthier.", mechanism: "EgFATB releases palmitic acid (16:0) from fatty acid synthase. Knockout reduces saturated fat content, addressing health concerns about palm oil.", confidence: "high", expectedOutcome: "40-60% reduction in palmitic acid content. Healthier palm oil without trans fats.", offTargetRisk: "low", guideRNASequence: "ATCGATCGAATTCCGGATCA", pamSite: "NGG" },
+      { geneId: "ls-myb", geneName: "LsMYB", fullName: "Lactuca sativa MYB Transcription Factor", genomeId: "lettuce", chromosome: "Chr 7", position: 0.38, editType: "overexpression", editDescription: "Overexpress LsMYB for enhanced anthocyanin content in lettuce.", mechanism: "LsMYB activates the anthocyanin biosynthetic pathway, increasing antioxidant content in lettuce leaves.", confidence: "medium", expectedOutcome: "2-3x anthocyanin content. Enhanced visual appeal and nutritional value.", offTargetRisk: "low", guideRNASequence: "GCCGATCGAATTCGATCCGT", pamSite: "TGG" },
+      { geneId: "cq-bet", geneName: "CqBET", fullName: "Chenopodium quinoa Betalain Biosynthesis Gene", genomeId: "quinoa", chromosome: "Chr 14B", position: 0.45, editType: "overexpression", editDescription: "Enhance betalain pigment production for antioxidant-rich quinoa.", mechanism: "CqBET controls betalain biosynthesis — unique pigments with potent antioxidant activity found only in Caryophyllales.", confidence: "medium", expectedOutcome: "Enhanced antioxidant capacity. Novel deep-red quinoa varieties with premium market appeal.", offTargetRisk: "low", guideRNASequence: "CCGAATTCGATCCGTTAAGC", pamSite: "NGG" },
     ],
   },
 
@@ -1221,6 +1658,15 @@ export const traits: Trait[] = [
         guideRNASequence: "TGATTCGAATCCGGATCCGA",
         pamSite: "AGG",
       },
+      // ── New crop yield targets ──
+      { geneId: "hv-gw", geneName: "HvGW", fullName: "Hordeum vulgare Grain Weight QTL", genomeId: "barley", chromosome: "Chr 7H", position: 0.4, editType: "point-mutation", editDescription: "Engineer HvGW for increased grain weight in barley.", mechanism: "HvGW is a grain weight regulator — point mutations increase grain fill rate and thousand kernel weight.", confidence: "medium", expectedOutcome: "10-15% increase in grain weight. Enhanced malting barley quality.", offTargetRisk: "low", guideRNASequence: "GCTAGCTTAACCGGATCGTA", pamSite: "NGG" },
+      { geneId: "sb-gw2", geneName: "SbGW2", fullName: "Sorghum bicolor Grain Weight 2", genomeId: "sorghum", chromosome: "Chr 6", position: 0.5, editType: "knockout", editDescription: "Knockout SbGW2 (negative regulator) to increase grain size in sorghum.", mechanism: "SbGW2 is a RING-type E3 ubiquitin ligase that negatively regulates grain size. Loss-of-function increases grain width and weight.", confidence: "medium", expectedOutcome: "15-20% increase in grain weight. Improved sorghum as food and feed crop.", offTargetRisk: "low", guideRNASequence: "TCCGATCGAATTCGATCCGA", pamSite: "TGG" },
+      { geneId: "sc-sps", geneName: "ScSPS", fullName: "Saccharum officinarum Sucrose Phosphate Synthase", genomeId: "sugarcane", chromosome: "Chr 1", position: 0.35, editType: "overexpression", editDescription: "Overexpress ScSPS to increase sucrose accumulation — the primary yield component in sugarcane.", mechanism: "ScSPS catalyzes the rate-limiting step of sucrose synthesis. Enhanced expression increases sucrose loading into stem storage parenchyma.", confidence: "high", expectedOutcome: "10-15% increase in stem sucrose content. Direct economic benefit at sugar mill.", offTargetRisk: "medium", guideRNASequence: "ATCGGATCCGTTAAGCGATC", pamSite: "AGG" },
+      { geneId: "ma-mads", geneName: "MaMADS", fullName: "Musa acuminata MADS-box Transcription Factor", genomeId: "banana", chromosome: "Chr 10", position: 0.45, editType: "promoter-swap", editDescription: "Swap MaMADS promoter for enhanced fruit development in banana.", mechanism: "MaMADS controls fruit size and development. Promoter engineering can increase bunch weight without affecting fruit quality.", confidence: "medium", expectedOutcome: "15-25% increase in bunch weight. Higher yield per plant per cycle.", offTargetRisk: "medium", guideRNASequence: "GCCGATCGAATTCGATCCGT", pamSite: "NGG" },
+      { geneId: "bn-clv3", geneName: "BnCLV3", fullName: "Brassica napus CLAVATA3", genomeId: "canola", chromosome: "A03", position: 0.6, editType: "point-mutation", editDescription: "Engineer BnCLV3 for increased silique number — analogous to maize fasciated ear QTL.", mechanism: "BnCLV3 controls shoot apical meristem size. Weak alleles increase inflorescence meristem activity and silique number.", confidence: "medium", expectedOutcome: "10-15% more siliques per plant. Higher seed yield without increasing plant density.", offTargetRisk: "medium", guideRNASequence: "CCGAATTCGATCCGTTAAGC", pamSite: "TGG" },
+      { geneId: "pg-gw2", geneName: "PgGW2", fullName: "Pennisetum glaucum Grain Weight 2", genomeId: "pearl-millet", chromosome: "Chr 5", position: 0.72, editType: "knockout", editDescription: "Knockout PgGW2 to increase grain size in pearl millet.", mechanism: "PgGW2 negatively regulates grain size. Knockout increases grain weight — critical for making pearl millet more competitive with larger-grained cereals.", confidence: "medium", expectedOutcome: "15-25% increase in grain weight. Improved acceptability and food processing quality.", offTargetRisk: "low", guideRNASequence: "GATCCGTTAAGCGATCGAAT", pamSite: "NGG" },
+      { geneId: "eg-shell", geneName: "EgSHELL", fullName: "Elaeis guineensis SHELL (Fruit Form)", genomeId: "oil-palm", chromosome: "Chr 2", position: 0.38, editType: "point-mutation", editDescription: "Engineer EgSHELL for tenera fruit form — 30% more oil yield than dura.", mechanism: "EgSHELL is a MADS-box gene. Heterozygous Sh/sh (tenera) has thin endocarp and 30% more mesocarp (oil-bearing tissue) than homozygous Sh/Sh (dura).", confidence: "high", expectedOutcome: "All palms produce tenera fruit form. 30% more oil per palm over 25-year lifespan.", offTargetRisk: "low", guideRNASequence: "TCCGGATCGATCGAATTCGA", pamSite: "AGG" },
+      { geneId: "ca2-pod", geneName: "CaPOD", fullName: "Cicer arietinum Pod Development Gene", genomeId: "chickpea", chromosome: "Chr 4", position: 0.68, editType: "overexpression", editDescription: "Enhance pod number and seed size in chickpea.", mechanism: "CaPOD regulates pod set and seed filling. Chickpea yield is limited by pod number per plant and seeds per pod.", confidence: "medium", expectedOutcome: "15-20% increase in pod number. Higher harvest index.", offTargetRisk: "low", guideRNASequence: "ATCGATCGAATTCCGGATCA", pamSite: "NGG" },
     ],
   },
 
@@ -1292,6 +1738,13 @@ export const traits: Trait[] = [
         guideRNASequence: "CCGTTAAGCTGATTCGAATC",
         pamSite: "AGG",
       },
+      // ── New crop flood targets ──
+      { geneId: "hv-erf", geneName: "HvERF-VII", fullName: "Hordeum vulgare ERF-VII Transcription Factor", genomeId: "barley", chromosome: "Chr 2H", position: 0.5, editType: "overexpression", editDescription: "Overexpress HvERF-VII for waterlogging tolerance in barley.", mechanism: "HvERF-VII activates anaerobic metabolism genes and aerenchyma formation. Barley is one of the most waterlogging-sensitive cereals.", confidence: "medium", expectedOutcome: "Survival of 7-10 days waterlogging (vs 3-4 days wild type). Critical for wet spring conditions.", offTargetRisk: "low", guideRNASequence: "GCTAGCTTAACCGGATCGTA", pamSite: "NGG" },
+      { geneId: "sb-sub1", geneName: "SbSUB1-like", fullName: "Sorghum bicolor SUB1-like ERF Transcription Factor", genomeId: "sorghum", chromosome: "Chr 3", position: 0.55, editType: "overexpression", editDescription: "Overexpress SbSUB1-like for flood tolerance in lowland sorghum.", mechanism: "SbSUB1-like is orthologous to rice SUB1A. Activates quiescence response during submergence.", confidence: "medium", expectedOutcome: "5-7 days submergence tolerance. Important for sorghum in flood-prone West African lowlands.", offTargetRisk: "low", guideRNASequence: "TCCGATCGAATTCGATCCGA", pamSite: "TGG" },
+      { geneId: "sc-erf", geneName: "ScERF-VII", fullName: "Saccharum officinarum ERF-VII Transcription Factor", genomeId: "sugarcane", chromosome: "Chr 8", position: 0.45, editType: "overexpression", editDescription: "Overexpress ScERF-VII for waterlogging tolerance in sugarcane.", mechanism: "ScERF-VII activates anaerobic metabolism. Sugarcane in tropical lowlands faces periodic waterlogging during monsoon.", confidence: "medium", expectedOutcome: "Improved survival during 2-3 week waterlogging events.", offTargetRisk: "medium", guideRNASequence: "ATCGGATCCGTTAAGCGATC", pamSite: "AGG" },
+      { geneId: "ma-erf", geneName: "MaERF-VII", fullName: "Musa acuminata ERF-VII Transcription Factor", genomeId: "banana", chromosome: "Chr 8", position: 0.75, editType: "overexpression", editDescription: "Overexpress MaERF-VII for flood tolerance in banana — critical for tropical flood-prone plantations.", mechanism: "MaERF-VII activates aerenchyma formation and anaerobic metabolism. Banana roots are sensitive to waterlogging — prolonged flooding causes root rot.", confidence: "medium", expectedOutcome: "Improved root survival during seasonal flooding. Important for monsoon-belt banana production.", offTargetRisk: "low", guideRNASequence: "GCCGATCGAATTCGATCCGT", pamSite: "NGG" },
+      { geneId: "ib-erf", geneName: "IbERF", fullName: "Ipomoea batatas ERF Transcription Factor", genomeId: "sweet-potato", chromosome: "Chr 10", position: 0.42, editType: "overexpression", editDescription: "Overexpress IbERF for waterlogging tolerance in sweet potato.", mechanism: "IbERF activates aerenchyma formation in storage roots. Sweet potato in tropical lowlands faces waterlogging during rainy season.", confidence: "medium", expectedOutcome: "Reduced storage root rot during waterlogging. Important for tropical production.", offTargetRisk: "low", guideRNASequence: "CCGAATTCGATCCGTTAAGC", pamSite: "TGG" },
+      { geneId: "ls-erf", geneName: "LsERF", fullName: "Lactuca sativa ERF Transcription Factor", genomeId: "lettuce", chromosome: "Chr 9", position: 0.45, editType: "overexpression", editDescription: "Overexpress LsERF for waterlogging tolerance in lettuce.", mechanism: "LsERF activates hypoxia-responsive genes. Lettuce roots are extremely sensitive to waterlogging — common in poorly drained fields.", confidence: "experimental", expectedOutcome: "Improved survival in waterlogged soils. Beneficial for heavy clay field production.", offTargetRisk: "low", guideRNASequence: "GATCCGTTAAGCGATCGAAT", pamSite: "AGG" },
     ],
   },
 ];
@@ -1444,6 +1897,151 @@ export const environments: Environment[] = [
       "drought-tolerance",
     ],
   },
+  // ── NEW ENVIRONMENTS ──────────────────────────────────
+  {
+    id: "mediterranean",
+    name: "Mediterranean Climate",
+    description:
+      "Hot, dry summers and mild, wet winters. Fire risk and seasonal drought stress dominate. The transition zone where many temperate crops face increasing heat and aridity due to climate change.",
+    color: "#F97316",
+    gradient: "from-orange-500 to-amber-500",
+    icon: "M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z",
+    challenges: [
+      "Prolonged summer drought (3-5 months without rain)",
+      "Fire risk from dry biomass accumulation",
+      "Heat waves exceeding 40°C becoming more frequent",
+      "Soil salinization from irrigation in summer",
+    ],
+    temperatureRange: "5°C – 42°C (high diurnal/seasonal range)",
+    rainfall: "400-800mm/year (concentrated in winter)",
+    soilType: "Terra rossa, calcareous, often alkaline",
+    requiredTraitIds: [
+      "drought-tolerance",
+      "heat-tolerance",
+      "uv-resistance",
+      "yield-boost",
+    ],
+  },
+  {
+    id: "temperate-continental",
+    name: "Temperate Continental",
+    description:
+      "Harsh winters with freeze-thaw cycles, warm summers, and a short but intense growing season. The world's major breadbasket regions — US Midwest, Ukrainian steppe, North China Plain.",
+    color: "#6366F1",
+    gradient: "from-indigo-500 to-blue-500",
+    icon: "M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z",
+    challenges: [
+      "Winter temperatures below -20°C with freeze-thaw cycles",
+      "Short growing season (120-180 frost-free days)",
+      "Late spring frosts damaging emerging crops",
+      "Rapid temperature fluctuations in spring/autumn",
+    ],
+    temperatureRange: "-25°C – 35°C (extreme range)",
+    rainfall: "400-800mm/year (summer-dominant)",
+    soilType: "Chernozem, mollisol (deep, fertile)",
+    requiredTraitIds: [
+      "cold-tolerance",
+      "yield-boost",
+      "disease-resistance",
+      "drought-tolerance",
+    ],
+  },
+  {
+    id: "monsoon-floodplain",
+    name: "Monsoon Floodplain",
+    description:
+      "Seasonal monsoon flooding submerges crops for days to weeks. Bangladesh, Myanmar, eastern India, Mekong Delta — where hundreds of millions depend on flood-prone rice and other staples.",
+    color: "#0EA5E9",
+    gradient: "from-sky-500 to-cyan-500",
+    icon: "M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z",
+    challenges: [
+      "Complete submergence for 7-21 days during monsoon",
+      "Stagnant flooding with anaerobic soil conditions",
+      "Post-flood disease pressure from humid conditions",
+      "Sudden flash flooding with strong water current",
+    ],
+    temperatureRange: "20°C – 38°C",
+    rainfall: "1500-3000mm/year (80% in monsoon season)",
+    soilType: "Alluvial, waterlogged, anaerobic",
+    requiredTraitIds: [
+      "flood-tolerance",
+      "disease-resistance",
+      "yield-boost",
+      "salt-tolerance",
+    ],
+  },
+  {
+    id: "acidic-tropical",
+    name: "Acidic Tropical Soil",
+    description:
+      "Highly weathered tropical soils with pH < 5.0 and toxic levels of aluminum and manganese. Over 50% of tropical arable land is acidic — a massive constraint on food production in Africa and South America.",
+    color: "#A3E635",
+    gradient: "from-lime-400 to-green-500",
+    icon: "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z",
+    challenges: [
+      "Aluminum toxicity inhibiting root growth (Al³⁺ > 50% CEC)",
+      "Phosphorus lockup in Fe/Al oxides — unavailable to plants",
+      "Manganese toxicity in waterlogged acid soils",
+      "Very low cation exchange capacity and nutrient retention",
+    ],
+    temperatureRange: "22°C – 35°C",
+    rainfall: "1200-2500mm/year",
+    soilType: "Oxisol, ultisol, ferralsol (pH 3.5-5.0)",
+    requiredTraitIds: [
+      "nutrient-efficiency",
+      "disease-resistance",
+      "yield-boost",
+      "enhanced-nutrition",
+    ],
+  },
+  {
+    id: "heavy-metal",
+    name: "Heavy Metal Contaminated",
+    description:
+      "Soils contaminated with cadmium, arsenic, lead, or zinc from mining, industrial activity, or phosphate fertilizer use. A growing food safety crisis — crops must exclude toxic metals from edible parts.",
+    color: "#71717A",
+    gradient: "from-zinc-500 to-slate-600",
+    icon: "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z",
+    challenges: [
+      "Cadmium accumulation in grain exceeding Codex limits",
+      "Arsenic in rice from paddy irrigation water",
+      "Lead contamination near roads and smelters",
+      "Zinc/copper excess from mine tailings",
+    ],
+    temperatureRange: "Variable (10°C – 35°C)",
+    rainfall: "Variable",
+    soilType: "Contaminated — various types with heavy metal burden",
+    requiredTraitIds: [
+      "nutrient-efficiency",
+      "enhanced-nutrition",
+      "yield-boost",
+      "disease-resistance",
+    ],
+  },
+  {
+    id: "controlled-environment",
+    name: "Urban / Controlled Environment",
+    description:
+      "Vertical farms, greenhouses, and space agriculture. Artificial lighting (LED), hydroponic/aeroponic systems, and controlled atmosphere. Optimizing for growth rate, compact architecture, and nutritional density.",
+    color: "#A855F7",
+    gradient: "from-purple-500 to-violet-500",
+    icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4",
+    challenges: [
+      "Artificial lighting spectrum and photoperiod optimization",
+      "Compact plant architecture for vertical stacking",
+      "Rapid growth cycle for economic viability",
+      "Nutrient density per unit of growing space",
+    ],
+    temperatureRange: "20°C – 28°C (controlled)",
+    rainfall: "N/A (hydroponic — 90% less water than field)",
+    soilType: "Soilless — hydroponic, aeroponic, or substrate-based",
+    requiredTraitIds: [
+      "yield-boost",
+      "enhanced-nutrition",
+      "disease-resistance",
+      "nutrient-efficiency",
+    ],
+  },
 ];
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -1455,6 +2053,29 @@ const plantNames: Record<string, string> = {
   vitis: "Vitis vinifera (Grapevine)",
   capsicum: "Capsicum annuum (Chili Pepper)",
   nicotiana: "Nicotiana tabacum (Tobacco)",
+  rice: "Oryza sativa (Rice)",
+  maize: "Zea mays (Maize)",
+  wheat: "Triticum aestivum (Wheat)",
+  tomato: "Solanum lycopersicum (Tomato)",
+  coffee: "Coffea arabica (Coffee)",
+  soybean: "Glycine max (Soybean)",
+  potato: "Solanum tuberosum (Potato)",
+  cassava: "Manihot esculenta (Cassava)",
+  barley: "Hordeum vulgare (Barley)",
+  sorghum: "Sorghum bicolor (Sorghum)",
+  cotton: "Gossypium hirsutum (Cotton)",
+  sugarcane: "Saccharum officinarum (Sugarcane)",
+  banana: "Musa acuminata (Banana)",
+  canola: "Brassica napus (Canola)",
+  peanut: "Arachis hypogaea (Peanut)",
+  chickpea: "Cicer arietinum (Chickpea)",
+  "pearl-millet": "Pennisetum glaucum (Pearl Millet)",
+  quinoa: "Chenopodium quinoa (Quinoa)",
+  "sweet-potato": "Ipomoea batatas (Sweet Potato)",
+  cacao: "Theobroma cacao (Cacao)",
+  tea: "Camellia sinensis (Tea)",
+  "oil-palm": "Elaeis guineensis (Oil Palm)",
+  lettuce: "Lactuca sativa (Lettuce)",
 };
 
 const summaries: Record<string, string> = {
@@ -1470,6 +2091,18 @@ const summaries: Record<string, string> = {
     "Engineering focuses on UV damage mitigation, cold night survival, and photosynthetic enhancement to compensate for reduced CO₂ partial pressure at altitude.",
   "nutrient-depleted":
     "Edits improve nutrient acquisition (high-affinity transporters), photosynthetic efficiency, and biofortification to produce more nutritious food from degraded soils with minimal inputs.",
+  "mediterranean":
+    "Engineering targets seasonal drought survival (ABA signaling, stomatal regulation), heat wave resilience (HSP network, membrane thermostability), UV protection for intense solar radiation, and yield stability under variable water availability.",
+  "temperate-continental":
+    "This plan engineers winter survival through deep cold acclimation (CBF cascade, membrane remodeling, cryoprotectant accumulation), rapid spring growth to maximize the short growing season, and disease resistance against cold-wet pathogens.",
+  "monsoon-floodplain":
+    "Edits confer submergence tolerance (SUB1A quiescence strategy, ERF-VII regulation), rapid recovery after de-submergence, and post-flood disease resistance to combat the humid pathogen pressure following monsoon flooding.",
+  "acidic-tropical":
+    "This plan targets aluminum tolerance (organic acid exudation, Al³⁺ exclusion), phosphorus acquisition from locked-up soil P (enhanced root exudates, mycorrhizal signaling), and micronutrient biofortification for nutritious food from degraded soils.",
+  "heavy-metal":
+    "Engineering focuses on toxic metal exclusion from edible parts — blocking cadmium/arsenic uptake at root level (transporter knockouts), vacuolar sequestration in non-edible tissues, and enhanced nutrient acquisition to outcompete toxic metals for uptake.",
+  "controlled-environment":
+    "This plan optimizes for controlled-environment agriculture: compact plant architecture (dwarfing genes), rapid growth cycle (photoperiod insensitivity), enhanced nutritional density, and disease resistance for closed growing systems.",
 };
 
 export function getEditPlan(
