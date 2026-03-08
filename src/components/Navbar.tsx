@@ -51,6 +51,7 @@ const links: { href: string; label: string; icon?: React.ReactNode }[] = [
   { href: "/genomes", label: "Genomes" },
   { href: "/architect", label: "Architect", icon: <ArchitectIcon /> },
   { href: "/lab", label: "Lab", icon: <BeakerIcon /> },
+  { href: "/learn", label: "Learn" },
   { href: "/about", label: "About" },
 ];
 
