@@ -1,7 +1,7 @@
 import { molecules } from "@/data/molecules";
 import { pathways } from "@/data/pathways";
 import { genomes } from "@/data/genomes";
-import Footer from "@/components/Footer";
+
 
 export const metadata = {
   title: "About | PlantMol",
@@ -284,7 +284,6 @@ export default function AboutPage() {
         </section>
       </main>
 
-      <Footer />
     </div>
   );
 }

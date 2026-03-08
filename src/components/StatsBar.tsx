@@ -1,6 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { molecules } from "@/data/molecules";
+import { pathways } from "@/data/pathways";
+import { genomes } from "@/data/genomes";
 
 interface StatItemProps {
   label: string;
@@ -39,14 +42,16 @@ function StatItem({ label, target, suffix = "" }: StatItemProps) {
   );
 }
 
+const totalGenes = new Set(molecules.flatMap((m) => m.genes.map((g) => g.name))).size;
+
 export function StatsBar() {
   return (
     <section className="border-y border-card-border bg-card/50 px-4 py-10 sm:px-6 lg:px-8">
       <div className="mx-auto grid max-w-4xl grid-cols-2 gap-8 sm:grid-cols-4">
-        <StatItem label="Molecules" target={10} />
-        <StatItem label="Pathways" target={3} />
-        <StatItem label="Plant Genomes" target={4} />
-        <StatItem label="Genes" target={30} suffix="+" />
+        <StatItem label="Molecules" target={molecules.length} />
+        <StatItem label="Pathways" target={pathways.length} />
+        <StatItem label="Plant Genomes" target={genomes.length} />
+        <StatItem label="Genes" target={totalGenes} suffix="+" />
       </div>
     </section>
   );

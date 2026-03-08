@@ -1,7 +1,7 @@
 import { genomes } from "@/data/genomes";
 import ChromosomeViewer from "@/components/ChromosomeViewer";
 import GenomeViewer3DWrapper from "@/components/GenomeViewer3DWrapper";
-import Footer from "@/components/Footer";
+
 
 export const metadata = {
   title: "Plant Genomes | PlantMol",
@@ -168,7 +168,6 @@ export default function GenomesPage() {
         </div>
       </main>
 
-      <Footer />
     </div>
   );
 }

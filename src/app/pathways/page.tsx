@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { pathways } from "@/data/pathways";
 import { getMolecule } from "@/data/molecules";
-import Footer from "@/components/Footer";
+
 
 export const metadata = {
   title: "Biosynthetic Pathways | PlantMol",
@@ -258,7 +258,6 @@ export default function PathwaysPage() {
         </div>
       </main>
 
-      <Footer />
     </div>
   );
 }
